@@ -31,9 +31,11 @@
 <style>
   :root { --bg:#0b0d11; --card:#151820; --line:#252a34; --tx:#f5f6f8; --mut:#a8afbb; --acc:#fbb03b; --acc2:#ffcf6b; --ink:#14213a; --blue:#1d3f79; }
   * { box-sizing:border-box; margin:0; }
-  html { scroll-behavior:smooth; overflow-x:hidden; }
+  html { scroll-behavior:smooth; }
+  /* recorta lo que se salga por los lados SIN crear un contenedor de scroll (si no, el móvil fijo deja de ser fijo) */
+  html, body { overflow-x:clip; }
   .cinta-wrap { overflow:hidden; padding:16px 0 6px; }
-  body { font-family:Figtree, system-ui, -apple-system, sans-serif; background:var(--bg); color:var(--tx); line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  body { font-family:Figtree, system-ui, -apple-system, sans-serif; background:var(--bg); color:var(--tx); line-height:1.5; -webkit-font-smoothing:antialiased; }
   img { max-width:100%; display:block; }
   a { color:var(--acc); }
   .wrap { max-width:1180px; margin:0 auto; padding:0 22px; }
