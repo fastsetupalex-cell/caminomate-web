@@ -6,11 +6,11 @@
 <title>CaminoMate · La app del Camino de Santiago</title>
 <meta name="description" content="CaminoMate: la app del Camino de Santiago que funciona sin cobertura. 15 caminos, etapas pueblo a pueblo y más de 3.000 albergues con precio y servicios. En 6 idiomas. Para iPhone.">
 <meta name="apple-itunes-app" content="app-id=6784231388">
-<meta name="theme-color" content="#0d0f13">
+<meta name="theme-color" content="#0b0d11">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CaminoMate · La app del Camino de Santiago">
 <meta property="og:description" content="15 caminos, etapas pueblo a pueblo y albergues, aunque no haya cobertura.">
-<meta property="og:image" content="https://fastsetupalex-cell.github.io/caminomate-web/img/es-01-inicio.jpg">
+<meta property="og:image" content="https://fastsetupalex-cell.github.io/caminomate-web/img/foto-hero.jpg">
 <meta property="og:url" content="https://fastsetupalex-cell.github.io/caminomate-web/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/icono.png">
@@ -23,134 +23,218 @@
 <link rel="alternate" hreflang="it" href="https://fastsetupalex-cell.github.io/caminomate-web/?lang=it">
 <link rel="alternate" hreflang="pt" href="https://fastsetupalex-cell.github.io/caminomate-web/?lang=pt">
 <link rel="alternate" hreflang="x-default" href="https://fastsetupalex-cell.github.io/caminomate-web/">
+<link rel="preload" as="image" href="img/foto-hero-m.jpg" media="(max-width: 900px)">
+<link rel="preload" as="image" href="img/foto-hero.jpg" media="(min-width: 901px)">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"CaminoMate","operatingSystem":"iOS","applicationCategory":"TravelApplication","url":"https://apps.apple.com/app/caminomate/id6784231388","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
 <style>
-  :root { --bg:#0d0f13; --bg2:#12151b; --card:#171a21; --line:#262a33; --tx:#f3f4f6; --mut:#a9afba; --acc:#fbb03b; --acc2:#f7b500; --ink:#14213a; }
+  :root { --bg:#0b0d11; --card:#151820; --line:#252a34; --tx:#f5f6f8; --mut:#a8afbb; --acc:#fbb03b; --acc2:#ffcf6b; --ink:#14213a; --blue:#1d3f79; }
   * { box-sizing:border-box; margin:0; }
-  html { scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; overflow-x:hidden; }
+  .cinta-wrap { overflow:hidden; padding:16px 0 6px; }
   body { font-family:Figtree, system-ui, -apple-system, sans-serif; background:var(--bg); color:var(--tx); line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
   img { max-width:100%; display:block; }
   a { color:var(--acc); }
-  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 22px; }
+  em { font-style:normal; }
+  .acc { color:var(--acc); }
 
-  /* cabecera */
-  .top { position:sticky; top:0; z-index:20; background:rgba(13,15,19,.82); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid transparent; transition:border-color .2s; }
-  .top.scrolled { border-bottom-color:var(--line); }
-  .top .wrap { display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px; }
-  .logo { display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; color:var(--tx); text-decoration:none; }
-  .logo img { width:34px; height:34px; border-radius:9px; }
+  /* ---------- cabecera ---------- */
+  .top { position:fixed; inset:0 0 auto; z-index:40; transition:background .25s, border-color .25s, backdrop-filter .25s; border-bottom:1px solid transparent; }
+  .top.scrolled { background:rgba(11,13,17,.78); backdrop-filter:saturate(1.5) blur(14px); -webkit-backdrop-filter:saturate(1.5) blur(14px); border-bottom-color:var(--line); }
+  .top .wrap { display:flex; align-items:center; justify-content:space-between; gap:12px; height:68px; }
+  .logo { display:flex; align-items:center; gap:10px; font-weight:800; font-size:20px; color:#fff; text-decoration:none; text-shadow:0 1px 12px rgba(0,0,0,.5); }
+  .logo img { width:36px; height:36px; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.4); }
   .top-r { display:flex; align-items:center; gap:10px; }
-  select { background:var(--card); color:var(--tx); border:1px solid var(--line); border-radius:10px; padding:7px 8px; font:inherit; font-size:14px; }
-  .mini { display:none; background:var(--acc); color:var(--ink); font-weight:800; font-size:14px; padding:8px 14px; border-radius:10px; text-decoration:none; }
-  .top.scrolled .mini { display:inline-block; }
+  select { background:rgba(21,24,32,.7); color:#fff; border:1px solid rgba(255,255,255,.18); border-radius:10px; padding:7px 8px; font:inherit; font-size:14px; backdrop-filter:blur(8px); }
+  .mini { opacity:0; pointer-events:none; background:var(--acc); color:var(--ink); font-weight:800; font-size:14px; padding:9px 15px; border-radius:11px; text-decoration:none; transition:opacity .25s; }
+  .top.scrolled .mini { opacity:1; pointer-events:auto; }
 
-  /* portada */
-  .hero { background:radial-gradient(90% 70% at 70% 10%, #2c2410 0%, transparent 60%), radial-gradient(70% 60% at 0% 100%, #11203a 0%, transparent 60%); }
-  .hero .wrap { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; padding-top:48px; padding-bottom:64px; }
-  .eyebrow { display:inline-flex; align-items:center; gap:8px; background:#1e1a10; border:1px solid #3b3017; color:var(--acc); font-weight:700; font-size:13px; letter-spacing:.4px; padding:6px 12px; border-radius:999px; }
-  h1 { font-size:clamp(38px, 5.6vw, 66px); line-height:1.02; letter-spacing:-1.5px; font-weight:800; margin-top:18px; }
-  h1 em { font-style:normal; color:var(--acc); display:block; }
-  .lead { color:var(--mut); font-size:clamp(17px, 2vw, 20px); margin-top:18px; max-width:540px; }
-  .ctas { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:28px; }
-  .store { display:inline-flex; align-items:center; gap:12px; background:#fff; color:#000; text-decoration:none; padding:11px 20px 11px 16px; border-radius:14px; transition:transform .15s; }
-  .store:hover { transform:translateY(-2px); }
-  .store svg { width:28px; height:28px; flex:none; }
-  .store span { display:flex; flex-direction:column; line-height:1.1; }
-  .store small { font-size:12px; font-weight:600; }
-  .store b { font-size:21px; font-weight:700; letter-spacing:-.3px; }
-  .ghost { color:var(--tx); text-decoration:none; font-weight:700; padding:12px 16px; border-radius:12px; border:1px solid var(--line); }
-  .ghost:hover { border-color:#3a3f4a; }
-  .android { color:var(--mut); font-size:14px; margin-top:14px; }
-  .qr { display:flex; align-items:center; gap:14px; margin-top:26px; padding:12px; border:1px solid var(--line); border-radius:16px; background:var(--card); max-width:340px; }
-  .qr div:first-child { background:#fff; padding:6px; border-radius:10px; width:86px; height:86px; flex:none; }
+  /* ---------- portada ---------- */
+  .hero { position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; isolation:isolate; }
+  .hero-bg { position:absolute; inset:-6% 0 0; z-index:-2; background:url(img/foto-hero.jpg) center 35%/cover no-repeat; transform:scale(1.08); animation:kb 24s ease-out both; }
+  @keyframes kb { to { transform:scale(1); } }
+  .hero::before { content:""; position:absolute; inset:0; z-index:-1; background:
+      linear-gradient(180deg, rgba(11,13,17,.55) 0%, rgba(11,13,17,.25) 30%, rgba(11,13,17,.82) 78%, var(--bg) 100%),
+      radial-gradient(70% 60% at 15% 50%, rgba(11,13,17,.75), transparent 70%); }
+  .hero .wrap { width:100%; display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding-top:110px; padding-bottom:70px; }
+  .chip { display:inline-flex; align-items:center; gap:8px; background:rgba(251,176,59,.14); border:1px solid rgba(251,176,59,.45); color:var(--acc2); font-weight:700; font-size:13.5px; padding:7px 13px; border-radius:999px; backdrop-filter:blur(6px); }
+  .chip i { width:8px; height:8px; border-radius:50%; background:#3ccf7a; box-shadow:0 0 0 0 rgba(60,207,122,.7); animation:pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow:0 0 0 9px rgba(60,207,122,0); } 100% { box-shadow:0 0 0 0 rgba(60,207,122,0); } }
+  h1 { font-size:clamp(44px, 7.2vw, 92px); line-height:.96; letter-spacing:-2.5px; font-weight:900; margin-top:20px; text-shadow:0 4px 40px rgba(0,0,0,.45); }
+  h1 em { display:block; background:linear-gradient(92deg, #ffd27a 0%, #fbb03b 45%, #ff8a3d 100%); -webkit-background-clip:text; background-clip:text; color:transparent; padding-bottom:.06em; }
+  .lead { color:#d9dde4; font-size:clamp(18px, 2vw, 22px); margin-top:20px; max-width:560px; text-shadow:0 2px 16px rgba(0,0,0,.6); }
+  .ctas { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:30px; }
+  .store { position:relative; display:inline-flex; align-items:center; gap:12px; background:#fff; color:#000; text-decoration:none; padding:13px 24px 13px 18px; border-radius:16px; box-shadow:0 12px 40px rgba(251,176,59,.35), 0 0 0 1px rgba(255,255,255,.6) inset; transition:transform .18s, box-shadow .18s; overflow:hidden; }
+  .store::after { content:""; position:absolute; inset:0; background:linear-gradient(110deg, transparent 30%, rgba(251,176,59,.35) 50%, transparent 70%); transform:translateX(-120%); animation:shine 4.5s 1.5s infinite; }
+  @keyframes shine { 0%, 70% { transform:translateX(-120%); } 100% { transform:translateX(120%); } }
+  .store:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 18px 50px rgba(251,176,59,.5); }
+  .store svg { width:30px; height:30px; flex:none; position:relative; z-index:1; }
+  .store span { display:flex; flex-direction:column; line-height:1.05; position:relative; z-index:1; }
+  .store small { font-size:12.5px; font-weight:600; }
+  .store b { font-size:23px; font-weight:700; letter-spacing:-.3px; }
+  .ghost { color:#fff; text-decoration:none; font-weight:700; padding:14px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.25); backdrop-filter:blur(6px); background:rgba(255,255,255,.06); }
+  .ghost:hover { background:rgba(255,255,255,.12); }
+  .android { color:#c5cad3; font-size:14px; margin-top:14px; }
+  .pros { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  .pros > span { display:inline-flex; align-items:center; gap:7px; font-weight:600; font-size:14px; color:#e8ebf0; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); padding:7px 12px; border-radius:999px; backdrop-filter:blur(6px); }
+  .pros svg { width:16px; height:16px; color:#3ccf7a; }
+
+  /* abanico de móviles */
+  .fan { position:relative; height:min(640px, 72vh); perspective:1400px; }
+  .ph { position:absolute; top:50%; left:50%; width:clamp(190px, 18vw, 260px); aspect-ratio:430/932; border-radius:38px; padding:8px; background:linear-gradient(160deg, #474d5a, #1a1d24); box-shadow:0 40px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.12) inset; transition:transform .5s cubic-bezier(.2,.8,.2,1); }
+  .ph img { width:100%; height:100%; object-fit:cover; object-position:top; border-radius:31px; }
+  .ph.c { z-index:3; transform:translate(-50%, -50%) translateZ(60px); animation:flota 6s ease-in-out infinite; }
+  .ph.l { z-index:2; transform:translate(-118%, -44%) rotate(-11deg) scale(.86); opacity:.92; }
+  .ph.r { z-index:2; transform:translate(18%, -44%) rotate(11deg) scale(.86); opacity:.92; }
+  @keyframes flota { 50% { transform:translate(-50%, -53%) translateZ(60px); } }
+  .fan:hover .ph.l { transform:translate(-132%, -46%) rotate(-15deg) scale(.88); }
+  .fan:hover .ph.r { transform:translate(32%, -46%) rotate(15deg) scale(.88); }
+  .flecha { position:absolute; right:4%; bottom:6%; z-index:4; width:74px; height:74px; border-radius:20px; background:var(--acc); display:grid; place-items:center; box-shadow:0 14px 40px rgba(251,176,59,.45); transform:rotate(-8deg); animation:flecha 3s ease-in-out infinite; }
+  .flecha svg { width:42px; height:42px; color:var(--ink); }
+  @keyframes flecha { 50% { transform:rotate(-8deg) translateY(-8px); } }
+  .scroll-down { position:absolute; left:50%; bottom:20px; transform:translateX(-50%); color:rgba(255,255,255,.7); font-size:13px; display:flex; flex-direction:column; align-items:center; gap:6px; text-decoration:none; }
+  .scroll-down span { width:22px; height:36px; border:2px solid rgba(255,255,255,.5); border-radius:12px; position:relative; }
+  .scroll-down span::after { content:""; position:absolute; left:50%; top:7px; width:4px; height:8px; border-radius:2px; background:#fff; transform:translateX(-50%); animation:rueda 1.8s infinite; }
+  @keyframes rueda { 0% { opacity:1; transform:translate(-50%, 0); } 100% { opacity:0; transform:translate(-50%, 12px); } }
+
+  /* ---------- cinta de caminos ---------- */
+  .cinta { background:var(--acc); color:var(--ink); overflow:hidden; transform:rotate(-1.6deg); margin:0 -20px; box-shadow:0 10px 40px rgba(251,176,59,.25); }
+  .cinta .pista { display:flex; gap:0; width:max-content; animation:cinta 38s linear infinite; }
+  .cinta span { font-weight:900; font-size:clamp(20px, 2.6vw, 30px); letter-spacing:-.5px; padding:14px 0; white-space:nowrap; display:flex; align-items:center; }
+  .cinta span::after { content:""; width:12px; height:12px; margin:0 26px; border-radius:50%; background:var(--ink); opacity:.65; }
+  @keyframes cinta { to { transform:translateX(-50%); } }
+
+  /* ---------- cifras ---------- */
+  .cifras { display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; padding:80px 0 40px; }
+  .cifra { text-align:center; padding:26px 12px; border-radius:24px; background:linear-gradient(180deg, #171b24, #12151c); border:1px solid var(--line); }
+  .cifra b { display:block; font-size:clamp(44px, 6vw, 72px); line-height:1; font-weight:900; letter-spacing:-2px; background:linear-gradient(180deg, #fff, #c9ced8); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .cifra:nth-child(2) b { background:linear-gradient(180deg, #ffd27a, #fbb03b); -webkit-background-clip:text; background-clip:text; }
+  .cifra span { display:block; color:var(--mut); margin-top:8px; font-weight:600; }
+
+  /* ---------- historia con el móvil fijo ---------- */
+  section { position:relative; }
+  .titulo { text-align:center; max-width:780px; margin:0 auto; }
+  .titulo h2 { font-size:clamp(34px, 5vw, 60px); line-height:1.02; letter-spacing:-1.6px; font-weight:900; }
+  .titulo p { color:var(--mut); font-size:clamp(17px, 1.8vw, 20px); margin-top:14px; }
+  .story { display:grid; grid-template-columns:1fr 1fr; gap:60px; padding:70px 0 40px; }
+  .pasos { padding:10vh 0 20vh; }
+  .paso { min-height:62vh; display:flex; flex-direction:column; justify-content:center; opacity:.28; transition:opacity .45s; }
+  .paso.on { opacity:1; }
+  .paso .num { font-weight:900; font-size:15px; color:var(--acc); letter-spacing:3px; }
+  .paso h3 { font-size:clamp(32px, 4vw, 52px); line-height:1.02; letter-spacing:-1.4px; font-weight:900; margin-top:10px; }
+  .paso h3 em { color:var(--acc); }
+  .paso p { color:var(--mut); font-size:20px; margin-top:14px; max-width:460px; }
+  .paso .ph-m { display:none; }
+  .fijo { position:sticky; top:12vh; height:76vh; display:flex; align-items:center; justify-content:center; }
+  .fijo .glow { position:absolute; width:120%; aspect-ratio:1; border-radius:50%; background:radial-gradient(closest-side, rgba(251,176,59,.22), transparent); filter:blur(10px); }
+  .fijo .ph { position:relative; top:auto; left:auto; transform:none; width:min(320px, 26vw); }
+  .fijo .ph img { position:absolute; inset:8px; width:calc(100% - 16px); height:calc(100% - 16px); opacity:0; transition:opacity .5s, transform .5s; transform:scale(1.03); }
+  .fijo .ph img.on { opacity:1; transform:none; }
+
+  /* ---------- sin cobertura ---------- */
+  .offline { position:relative; margin:40px 0; padding:140px 0; overflow:hidden; isolation:isolate; }
+  .offline .bg { position:absolute; inset:-15% 0; z-index:-2; background:url(img/foto-bosque.jpg) center/cover no-repeat; will-change:transform; }
+  .offline::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, var(--bg) 0%, rgba(11,13,17,.55) 22%, rgba(11,13,17,.6) 78%, var(--bg) 100%); }
+  .offline h2 { font-size:clamp(44px, 8vw, 110px); line-height:.92; letter-spacing:-3px; font-weight:900; text-align:center; text-shadow:0 6px 50px rgba(0,0,0,.6); }
+  .offline h2 em { display:block; color:var(--acc); }
+  .tres { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-top:54px; }
+  .tres div { background:rgba(15,18,24,.72); border:1px solid rgba(255,255,255,.12); border-radius:22px; padding:24px; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+  .tres svg { width:30px; height:30px; color:var(--acc); }
+  .tres b { display:block; font-size:20px; margin-top:12px; }
+  .tres p { color:#c3c8d1; margin-top:6px; }
+
+  /* ---------- caminos y planes ---------- */
+  .bloque { padding:90px 0; }
+  .rutas { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:900px; margin:40px auto 0; }
+  .rutas span { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:10px 18px; font-weight:700; transition:transform .2s, border-color .2s, background .2s; }
+  .rutas span:hover { transform:translateY(-3px); border-color:var(--acc); background:#1d1a12; }
+  .planes { display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:940px; margin:44px auto 0; }
+  .plan { background:var(--card); border:1px solid var(--line); border-radius:28px; padding:32px; }
+  .plan.dest { position:relative; border-color:transparent; background:linear-gradient(var(--card), var(--card)) padding-box, linear-gradient(135deg, #ffd27a, #fbb03b 40%, #ff8a3d) border-box; border:1.5px solid transparent; }
+  .plan h3 { font-size:28px; font-weight:900; letter-spacing:-.5px; }
+  .plan .tag { color:var(--acc); font-weight:700; margin-top:4px; }
+  .plan ul { list-style:none; padding:0; margin-top:20px; display:grid; gap:12px; }
+  .plan li { padding-left:30px; position:relative; color:#dde1e7; }
+  .plan li::before { content:""; position:absolute; left:0; top:3px; width:18px; height:18px; border-radius:50%; background:#1f3a2a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ccf7a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat; }
+  .plan.dest li::before { background-color:#3a2f12; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbb03b' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E"); }
+  .plan .nota { color:var(--mut); font-size:14px; margin-top:18px; }
+
+  .dos { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .caja { background:var(--card); border:1px solid var(--line); border-radius:28px; padding:32px; }
+  .caja h3 { font-size:26px; font-weight:900; letter-spacing:-.5px; }
+  .caja p { color:var(--mut); margin-top:10px; font-size:17px; }
+
+  /* ---------- final ---------- */
+  .final { position:relative; padding:170px 0 150px; text-align:center; overflow:hidden; isolation:isolate; }
+  .final .bg { position:absolute; inset:0; z-index:-2; background:url(img/foto-catedral.jpg) center 30%/cover no-repeat; }
+  .final::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, var(--bg) 0%, rgba(11,13,17,.35) 35%, rgba(11,13,17,.75) 100%); }
+  .final h2 { font-size:clamp(46px, 8vw, 104px); line-height:.94; letter-spacing:-3px; font-weight:900; text-shadow:0 6px 50px rgba(0,0,0,.55); }
+  .final h2 em { display:block; color:var(--acc); }
+  .final p { color:#e3e6eb; font-size:20px; margin:18px auto 0; max-width:600px; text-shadow:0 2px 20px rgba(0,0,0,.7); }
+  .final .ctas { justify-content:center; }
+  .qr { display:inline-flex; align-items:center; gap:14px; margin-top:26px; padding:12px 16px 12px 12px; border-radius:18px; background:rgba(15,18,24,.75); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(10px); text-align:left; }
+  .qr div { background:#fff; padding:6px; border-radius:10px; width:92px; height:92px; flex:none; }
   .qr svg { width:100%; height:100%; display:block; }
-  .qr p { color:var(--mut); font-size:14px; }
-  .qr b { color:var(--tx); display:block; }
-  .pros { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:22px; color:var(--mut); font-size:14px; }
-  .pros span::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--acc); margin-right:7px; vertical-align:1px; }
+  .qr p { margin:0; font-size:14px; color:#c3c8d1; max-width:200px; text-shadow:none; }
+  .qr b { color:#fff; display:block; font-size:15px; }
 
-  .phone { position:relative; justify-self:center; width:min(330px, 78vw); aspect-ratio: 430 / 932; border-radius:46px; padding:10px; background:linear-gradient(160deg, #3a3f4a, #1b1e25); box-shadow:0 40px 100px rgba(0,0,0,.55), 0 0 0 1px #444a56 inset; }
-  .phone img { width:100%; height:100%; object-fit:cover; object-position:top; border-radius:37px; }
-  .phone::after { content:""; position:absolute; inset:-30% -40%; background:radial-gradient(closest-side, rgba(251,176,59,.18), transparent); z-index:-1; }
-
-  /* bloques */
-  section { padding:72px 0; }
-  .titulo { text-align:center; max-width:720px; margin:0 auto 44px; }
-  .titulo h2 { font-size:clamp(30px, 4vw, 44px); line-height:1.08; letter-spacing:-1px; font-weight:800; }
-  .titulo h2 em { font-style:normal; color:var(--acc); }
-  .titulo p { color:var(--mut); font-size:18px; margin-top:12px; }
-
-  .feat { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; max-width:980px; margin:0 auto 72px; }
-  .feat:last-child { margin-bottom:0; }
-  .feat.rev .ftx { order:2; }
-  .feat .num { color:var(--acc); font-weight:800; font-size:14px; letter-spacing:2px; }
-  .feat h3 { font-size:clamp(26px, 3.4vw, 38px); line-height:1.08; letter-spacing:-.8px; font-weight:800; margin-top:8px; }
-  .feat h3 em { font-style:normal; color:var(--acc); }
-  .feat p { color:var(--mut); font-size:18px; margin-top:12px; }
-  .feat .phone { width:min(290px, 70vw); }
-
-  .rutas { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:860px; margin:0 auto; }
-  .rutas span { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:8px 16px; font-weight:600; }
-
-  .planes { display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:880px; margin:0 auto; }
-  .plan { background:var(--card); border:1px solid var(--line); border-radius:24px; padding:28px; }
-  .plan.dest { border-color:#5a4718; background:linear-gradient(180deg, #1f1b10, var(--card) 60%); }
-  .plan h3 { font-size:24px; font-weight:800; }
-  .plan .tag { color:var(--acc); font-weight:700; font-size:14px; margin-top:4px; }
-  .plan ul { list-style:none; padding:0; margin-top:16px; display:grid; gap:10px; }
-  .plan li { padding-left:28px; position:relative; color:#d7dbe2; }
-  .plan li::before { content:""; position:absolute; left:0; top:4px; width:16px; height:16px; border-radius:50%; background:#1f3a2a; box-shadow:inset 0 0 0 5px #3ccf7a; }
-  .plan .nota { color:var(--mut); font-size:14px; margin-top:16px; }
-
-  .banda { background:linear-gradient(135deg, #1f1b10 0%, #12151b 55%); border:1px solid #3b3017; border-radius:28px; padding:44px 28px; text-align:center; max-width:980px; margin:0 auto; }
-  .banda h2 { font-size:clamp(28px, 4vw, 42px); line-height:1.08; letter-spacing:-1px; font-weight:800; }
-  .banda p { color:var(--mut); font-size:18px; margin:12px auto 0; max-width:620px; }
-  .banda .ctas { justify-content:center; }
-
-  .dos { display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:980px; margin:0 auto; }
-  .caja { background:var(--card); border:1px solid var(--line); border-radius:24px; padding:28px; }
-  .caja h3 { font-size:22px; font-weight:800; }
-  .caja p { color:var(--mut); margin-top:10px; }
-
-  footer { border-top:1px solid var(--line); padding:28px 0 110px; color:var(--mut); font-size:14px; }
-  footer .wrap { display:flex; flex-wrap:wrap; gap:12px 26px; justify-content:space-between; }
+  footer { border-top:1px solid var(--line); padding:30px 0 120px; color:var(--mut); font-size:14px; }
+  footer .wrap { display:grid; gap:14px; }
+  footer .fila { display:flex; flex-wrap:wrap; gap:12px 26px; justify-content:space-between; }
   footer nav { display:flex; flex-wrap:wrap; gap:12px 22px; }
   footer a { color:var(--mut); }
+  .creditos { font-size:12.5px; color:#7c8491; }
 
-  /* barra fija de descarga en móvil */
-  .barra { position:fixed; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); z-index:30; display:none; align-items:center; gap:12px; background:rgba(23,26,33,.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid var(--line); border-radius:18px; padding:10px 10px 10px 12px; box-shadow:0 10px 40px rgba(0,0,0,.5); transform:translateY(140%); transition:transform .25s ease; }
+  /* ---------- barra fija móvil ---------- */
+  .barra { position:fixed; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); z-index:50; display:none; align-items:center; gap:12px; background:rgba(21,24,32,.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:10px 10px 10px 12px; box-shadow:0 14px 44px rgba(0,0,0,.55); transform:translateY(150%); transition:transform .3s cubic-bezier(.2,.8,.2,1); }
   .barra.on { transform:none; }
-  .barra img { width:40px; height:40px; border-radius:10px; flex:none; }
+  .barra img { width:42px; height:42px; border-radius:11px; flex:none; }
   .barra div { flex:1; min-width:0; line-height:1.2; }
   .barra b { display:block; font-size:15px; }
   .barra small { color:var(--mut); font-size:12.5px; }
-  .barra a { background:var(--acc); color:var(--ink); font-weight:800; text-decoration:none; padding:10px 16px; border-radius:12px; white-space:nowrap; }
+  .barra a { background:var(--acc); color:var(--ink); font-weight:800; text-decoration:none; padding:11px 16px; border-radius:13px; white-space:nowrap; }
 
-  .rv { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .rv { opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
   .rv.in { opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce) { .rv { opacity:1; transform:none; transition:none; } html { scroll-behavior:auto; } }
 
-  @media (max-width: 860px) {
-    .hero .wrap { grid-template-columns:1fr; text-align:center; padding-top:28px; gap:36px; }
+  @media (max-width: 960px) {
+    .hero { min-height:auto; }
+    .hero-bg { background-image:url(img/foto-hero-m.jpg); }
+    .hero .wrap { grid-template-columns:1fr; text-align:center; padding-top:100px; padding-bottom:40px; gap:10px; }
     .lead { margin-left:auto; margin-right:auto; }
     .ctas, .pros { justify-content:center; }
+    .fan { height:440px; margin-top:20px; }
+    .ph { width:190px; }
+    .flecha { right:6%; bottom:2%; width:60px; height:60px; }
+    .scroll-down { display:none; }
+    .cifras { grid-template-columns:repeat(2, 1fr); padding-top:60px; }
+    .story { grid-template-columns:1fr; padding-top:40px; }
+    .fijo { display:none; }
+    .pasos { padding:0; display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; margin:30px -22px 0; padding:0 22px 20px; scrollbar-width:none; }
+    .pasos::-webkit-scrollbar { display:none; }
+    .paso { min-height:auto; opacity:1; flex:0 0 82%; scroll-snap-align:center; background:var(--card); border:1px solid var(--line); border-radius:28px; padding:24px 22px; text-align:center; justify-content:flex-start; }
+    .paso p { font-size:17px; margin-left:auto; margin-right:auto; }
+    .paso .ph-m { display:block; width:72%; margin:22px auto 0; aspect-ratio:430/932; border-radius:30px; padding:6px; background:linear-gradient(160deg, #474d5a, #1a1d24); }
+    .paso .ph-m img { width:100%; height:100%; object-fit:cover; object-position:top; border-radius:25px; }
+    .desliza { display:block !important; }
+    .offline { padding:100px 0; }
+    .tres, .planes, .dos { grid-template-columns:1fr; }
+    .bloque { padding:64px 0; }
+    .final { padding:120px 0 110px; }
+    .final .bg { background-image:url(img/foto-catedral-m.jpg); }
     .qr { display:none; }
-    .feat, .feat.rev { grid-template-columns:1fr; gap:26px; text-align:center; margin-bottom:64px; }
-    .feat.rev .ftx { order:0; }
-    .feat .phone { order:2; }
-    .planes, .dos { grid-template-columns:1fr; }
-    section { padding:56px 0; }
     .barra { display:flex; }
-    .top .mini { display:none !important; }
+    .top .mini { display:none; }
   }
-  @media (max-width: 400px) { .store b { font-size:19px; } .ghost { display:none; } }
+  @media (max-width: 420px) { .store b { font-size:20px; } .ghost { display:none; } .ph { width:160px; } .fan { height:380px; } h1 { letter-spacing:-1.5px; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important; } .rv { opacity:1; transform:none; } html { scroll-behavior:auto; } }
 </style>
 </head>
 <body>
 
-<header class="top" id="top">
+<header class="top" id="cab">
   <div class="wrap">
     <a class="logo" href="./"><img src="img/icono.png" alt="">CaminoMate</a>
     <div class="top-r">
@@ -164,47 +248,89 @@
 </header>
 
 <div class="hero">
+  <div class="hero-bg" role="img" aria-label="O Cebreiro, Galicia"></div>
   <div class="wrap">
     <div>
-      <span class="eyebrow" data-t="eyebrow"></span>
+      <span class="chip"><i></i><span data-t="chip"></span></span>
       <h1 data-t="h1"></h1>
       <p class="lead" data-t="sub"></p>
       <div class="ctas">
-        <a class="store dl" href="https://apps.apple.com/app/caminomate/id6784231388" aria-label="App Store">
+        <a class="store" href="https://apps.apple.com/app/caminomate/id6784231388" aria-label="App Store">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.67 1.37-.58.67-1.09 1.75-.96 2.79 1.02.08 2.06-.52 2.69-1.27z"/></svg>
           <span><small data-t="storeSmall"></small><b>App Store</b></span>
         </a>
         <a class="ghost" href="#que-hace" data-t="verMas"></a>
       </div>
       <p class="android" data-t="android"></p>
-      <div class="qr"><div id="qr"></div><p><b data-t="qrT"></b><span data-t="qr"></span></p></div>
-      <div class="pros"><span data-t="p1"></span><span data-t="p2"></span><span data-t="p3"></span></div>
+      <div class="pros">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span data-t="p1"></span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span data-t="p2"></span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span data-t="p3"></span></span>
+      </div>
     </div>
-    <div class="phone rv"><img data-img="01-inicio" alt=""></div>
+    <div class="fan" id="fan">
+      <div class="ph l"><img data-img="02-etapa" alt=""></div>
+      <div class="ph r"><img data-img="03-mapa" alt=""></div>
+      <div class="ph c"><img data-img="01-inicio" alt=""></div>
+      <div class="flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
   </div>
+  <a class="scroll-down" href="#cifras" aria-label="Bajar"><span></span></a>
 </div>
 
+<div class="cinta-wrap"><div class="cinta" aria-hidden="true"><div class="pista" id="pista"></div></div></div>
+
 <main>
-  <section id="que-hace">
+  <div class="wrap">
+    <div class="cifras" id="cifras">
+      <div class="cifra rv"><b data-count="15">15</b><span data-t="c1"></span></div>
+      <div class="cifra rv"><b data-count="3000" data-plus="1">3.000+</b><span data-t="c2"></span></div>
+      <div class="cifra rv"><b data-count="6">6</b><span data-t="c3"></span></div>
+      <div class="cifra rv"><b>0</b><span data-t="c4"></span></div>
+    </div>
+  </div>
+
+  <section id="que-hace" style="padding-top:60px">
     <div class="wrap">
       <div class="titulo rv"><h2 data-t="queT"></h2><p data-t="que"></p></div>
-      <div class="feat rv"><div class="ftx"><div class="num">01</div><h3 data-t="f1t"></h3><p data-t="f1"></p></div><div class="phone"><img data-img="04-camas" alt=""></div></div>
-      <div class="feat rev rv"><div class="ftx"><div class="num">02</div><h3 data-t="f2t"></h3><p data-t="f2"></p></div><div class="phone"><img data-img="02-etapa" alt=""></div></div>
-      <div class="feat rv"><div class="ftx"><div class="num">03</div><h3 data-t="f3t"></h3><p data-t="f3"></p></div><div class="phone"><img data-img="03-mapa" alt=""></div></div>
-      <div class="feat rev rv"><div class="ftx"><div class="num">04</div><h3 data-t="f4t"></h3><p data-t="f4"></p></div><div class="phone"><img data-img="05-albergue" alt=""></div></div>
-    </div>
-  </section>
-
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="titulo rv"><h2 data-t="rutasT"></h2><p data-t="rutas"></p></div>
-      <div class="rutas rv">
-        <span>Francés</span><span>Francés · Sarria</span><span>Portugués · Costa</span><span>Portugués · Central</span><span>Norte</span><span>Primitivo</span><span>Inglés</span><span>Vía de la Plata</span><span>Invierno</span><span>Fisterra-Muxía</span><span>Aragonés</span><span>Baztanés</span><span>Lebaniego</span><span>Olvidado</span><span>Via Adresca</span>
+      <p class="desliza" style="display:none;text-align:center;color:var(--mut);font-size:14px;margin-top:14px" data-t="desliza"></p>
+      <div class="story">
+        <div class="pasos" id="pasos">
+          <div class="paso" data-i="0"><div class="num">01</div><h3 data-t="f0t"></h3><p data-t="f0"></p><div class="ph-m"><img data-img="01-inicio" alt="" loading="lazy"></div></div>
+          <div class="paso" data-i="1"><div class="num">02</div><h3 data-t="f2t"></h3><p data-t="f2"></p><div class="ph-m"><img data-img="02-etapa" alt="" loading="lazy"></div></div>
+          <div class="paso" data-i="2"><div class="num">03</div><h3 data-t="f3t"></h3><p data-t="f3"></p><div class="ph-m"><img data-img="03-mapa" alt="" loading="lazy"></div></div>
+          <div class="paso" data-i="3"><div class="num">04</div><h3 data-t="f1t"></h3><p data-t="f1"></p><div class="ph-m"><img data-img="04-camas" alt="" loading="lazy"></div></div>
+          <div class="paso" data-i="4"><div class="num">05</div><h3 data-t="f4t"></h3><p data-t="f4"></p><div class="ph-m"><img data-img="05-albergue" alt="" loading="lazy"></div></div>
+        </div>
+        <div class="fijo"><div class="glow"></div>
+          <div class="ph" id="fijo">
+            <img data-img="01-inicio" alt="" class="on"><img data-img="02-etapa" alt=""><img data-img="03-mapa" alt=""><img data-img="04-camas" alt=""><img data-img="05-albergue" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section class="offline">
+    <div class="bg" id="bgBosque"></div>
+    <div class="wrap">
+      <h2 class="rv" data-t="offT"></h2>
+      <div class="tres">
+        <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0119 12.55M5 12.55a10.94 10.94 0 015.17-2.39M10.71 5.05A16 16 0 0122.58 9M1.42 9a15.91 15.91 0 014.7-2.88M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg><b data-t="o1t"></b><p data-t="o1"></p></div>
+        <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><b data-t="o2t"></b><p data-t="o2"></p></div>
+        <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg><b data-t="o3t"></b><p data-t="o3"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <div class="wrap">
+      <div class="titulo rv"><h2 data-t="rutasT"></h2><p data-t="rutas"></p></div>
+      <div class="rutas rv" id="rutas"></div>
+    </div>
+  </section>
+
+  <section class="bloque" style="padding-top:0">
     <div class="wrap">
       <div class="titulo rv"><h2 data-t="planesT"></h2></div>
       <div class="planes">
@@ -214,22 +340,7 @@
     </div>
   </section>
 
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="banda rv">
-        <h2 data-t="bandaT"></h2>
-        <p data-t="banda"></p>
-        <div class="ctas">
-          <a class="store dl" href="https://apps.apple.com/app/caminomate/id6784231388" aria-label="App Store">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.67 1.37-.58.67-1.09 1.75-.96 2.79 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span><small data-t="storeSmall"></small><b>App Store</b></span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding-top:0" id="asociaciones">
+  <section class="bloque" style="padding-top:0" id="asociaciones">
     <div class="wrap">
       <div class="dos">
         <div class="caja rv"><h3 data-t="oiaT"></h3><p data-t="oia"></p></div>
@@ -237,111 +348,143 @@
       </div>
     </div>
   </section>
+
+  <section class="final">
+    <div class="bg" role="img" aria-label="Catedral de Santiago de Compostela"></div>
+    <div class="wrap">
+      <h2 class="rv" data-t="finalT"></h2>
+      <p class="rv" data-t="final"></p>
+      <div class="ctas rv">
+        <a class="store" href="https://apps.apple.com/app/caminomate/id6784231388" aria-label="App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.67 1.37-.58.67-1.09 1.75-.96 2.79 1.02.08 2.06-.52 2.69-1.27z"/></svg>
+          <span><small data-t="storeSmall"></small><b>App Store</b></span>
+        </a>
+      </div>
+      <div class="qr rv"><div id="qr"></div><p><b data-t="qrT"></b><span data-t="qr"></span></p></div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 CaminoMate · <span data-t="contacto"></span> <a href="mailto:fastsetupalex@gmail.com">fastsetupalex@gmail.com</a></span>
-    <nav><a href="soporte.html" data-t="soporte"></a><a href="privacy.html" data-t="privacidad"></a></nav>
+    <div class="fila">
+      <span>© 2026 CaminoMate · <span data-t="contacto"></span> <a href="mailto:fastsetupalex@gmail.com">fastsetupalex@gmail.com</a></span>
+      <nav><a href="soporte.html" data-t="soporte"></a><a href="privacy.html" data-t="privacidad"></a></nav>
+    </div>
+    <p class="creditos"><span data-t="fotos"></span> <a href="https://commons.wikimedia.org/wiki/File:O_Cebreiro,_Pedrafita_do_Cebreiro,_Galicia_(Spain)._Vistas.jpg">O Cebreiro</a>: amaianos, CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Camino_de_Santiago_outside_Arzua.jpg">Arzúa</a>: miketnorton, CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Catedral_de_Santiago_de_Compostela,_la_Praza_do_Obradoiro.jpg">Catedral de Santiago</a>: D.Rovchak, CC BY-SA 4.0 · Wikimedia Commons</p>
   </div>
 </footer>
 
 <div class="barra" id="barra">
   <img src="img/icono.png" alt="">
   <div><b>CaminoMate</b><small data-t="barra"></small></div>
-  <a class="dl" href="https://apps.apple.com/app/caminomate/id6784231388" data-t="ctaCorto"></a>
+  <a href="https://apps.apple.com/app/caminomate/id6784231388" data-t="ctaCorto"></a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
 const APP = "https://apps.apple.com/app/caminomate/id6784231388";
+const RUTAS = ["Francés","Portugués · Costa","Norte","Primitivo","Portugués · Central","Inglés","Vía de la Plata","Invierno","Francés · Sarria","Fisterra-Muxía","Aragonés","Baztanés","Lebaniego","Olvidado","Via Adresca"];
 const T = {
-  es: { eyebrow:"Para iPhone · En 6 idiomas", h1:"Tu Camino de Santiago,<em>aunque no haya cobertura</em>", sub:"Cuántos km te quedan, qué hay en cada pueblo y dónde dormir. 15 caminos y más de 3.000 albergues, en el bolsillo.", storeSmall:"Descárgala en el", ctaCorto:"Descargar", verMas:"Ver qué hace", android:"¿Tienes Android? La versión Android llega muy pronto a Google Play.", androidNow:"Estás en Android: la versión Android llega muy pronto a Google Play. Mientras, puedes enseñársela a quien vaya con iPhone.",
-    qrT:"Apunta con el móvil", qr:"Escanea el código con la cámara del iPhone y descárgala.", p1:"Funciona sin cobertura", p2:"Sin anuncios", p3:"Sin registrarte",
-    queT:"Todo lo que necesitas <em>en el Camino</em>", que:"Hecha para usarla andando: grande, clara y sin depender de la cobertura.",
-    f1t:"Sabe a qué hora <em>llegas</em>", f1:"Plazas y hora de llegada a cada albergue, a tu ritmo, a pie o en bici. Y si cambias de planes, replanificas desde donde estás.",
+  es: { chip:"Nueva versión · En 6 idiomas", h1:"Tu Camino,<em>sin cobertura.</em>", sub:"Cuántos km te quedan, qué hay en cada pueblo y dónde dormir esta noche. 15 caminos a Santiago en tu iPhone.", storeSmall:"Descárgala en el", ctaCorto:"Descargar", verMas:"Ver cómo funciona", android:"¿Android? Muy pronto en Google Play.", androidNow:"Estás en Android: CaminoMate llega muy pronto a Google Play. Mientras, pásasela a quien vaya con iPhone.",
+    p1:"Sin cobertura", p2:"Sin anuncios", p3:"Sin registrarte", c1:"caminos a Santiago", c2:"albergues con precio", c3:"idiomas", c4:"anuncios",
+    queT:"Hecha para usarla <span class='acc'>andando</span>", que:"Grande, clara y sin depender de la cobertura. Esto es lo que llevas en el bolsillo.", desliza:"Desliza para ver más →",
+    f0t:"Cuántos km te quedan, <em>en vivo</em>", f0:"Tu posición sobre el trazado real, los km hasta Santiago y tu hora de llegada a tu ritmo. Y un aviso si te sales del Camino.",
     f2t:"Cada etapa, <em>pueblo a pueblo</em>", f2:"El perfil de la etapa y lo que hay en cada pueblo: bar, tienda, farmacia, fuente y dónde dormir.",
-    f3t:"El trazado real, <em>sin perderte</em>", f3:"Mapa satélite con el trazado, los albergues, las fuentes y las farmacias. Y los avisos de otros peregrinos: fuente seca, albergue completo, desvío.",
+    f3t:"El trazado real, <em>sin perderte</em>", f3:"Mapa satélite con el trazado, albergues, fuentes y farmacias. Y los avisos de otros peregrinos: fuente seca, albergue completo, desvío.",
+    f1t:"Sabe a qué hora <em>llegas</em>", f1:"Plazas y hora de llegada a cada albergue, a tu ritmo, a pie o en bici. Y si cambias de planes, replanificas desde donde estás.",
     f4t:"Todo sobre <em>cada albergue</em>", f4:"Plazas, precio, fechas de apertura y servicios, opiniones de peregrinos y el aviso de «completo hoy».",
-    rutasT:"15 caminos", rutas:"Con su mapa y su perfil de desnivel reales.",
-    planesT:"Lo esencial, <em>gratis</em>", gratisT:"Gratis", gratisTag:"Para siempre, sin anuncios", gratis:["Los 15 caminos con mapa y perfil","Etapas pueblo a pueblo","Albergues con precio y servicios","GPS y modo caminata","Avisos entre peregrinos y Ultreia, la comunidad"],
+    offT:"¿Sin cobertura?<em>Sin problema.</em>", o1t:"Funciona sin red", o1:"Etapas, albergues y tu progreso van siempre en el móvil, también en mitad del monte.", o2t:"GPS sobre el trazado", o2:"Sabes dónde estás y cuánto te queda aunque no tengas datos.", o3t:"Dónde dormir", o3:"Albergues con plazas, precio y servicios, para decidir sobre la marcha.",
+    rutasT:"15 caminos, <span class='acc'>un solo bolsillo</span>", rutas:"Cada uno con su mapa y su perfil de desnivel reales.",
+    planesT:"Lo esencial, <span class='acc'>gratis</span>", gratisT:"Gratis", gratisTag:"Para siempre, sin anuncios", gratis:["Los 15 caminos con mapa y perfil","Etapas pueblo a pueblo","Albergues con precio y servicios","GPS y modo caminata","Avisos entre peregrinos y Ultreia, la comunidad"],
     paseT:"Pase Camino", paseTag:"Opcional · pago único", pase:["Mapas de toda la ruta para ir sin cobertura","Lluvia hora a hora y radar en el mapa","Camas y replanificar desde donde estás","Estadísticas, credencial, certificado y diario en PDF"], paseNota:"No se renueva solo. También existe «Para siempre», con lo mismo y sin caducidad. La primera vez que empiezas a caminar tienes 48 horas con todo incluido.",
-    bandaT:"Que el Camino te pille con ella", banda:"Descárgala antes de salir: así tienes tus etapas y albergues aunque te quedes sin cobertura.",
     oiaT:"Hecha en el Camino", oia:"CaminoMate la hace Alex desde Oia, un pueblo marinero del Camino Portugués de la Costa. Los peregrinos pasan cada día por delante de su casa: de ahí sale todo lo que tiene la app.",
-    asocT:"¿Sois una asociación del Camino?", asoc:"Publicad vuestro camino en CaminoMate con vuestro nombre: trazado, etapas y alojamientos que vuestros voluntarios actualizan desde un panel web, un código en vuestra guía de papel y los avisos de señalización directamente a la asociación. Ya trabajamos así con una asociación francesa.", asocCta:"Escribidnos",
-    barra:"El Camino de Santiago, sin cobertura", contacto:"Contacto:", soporte:"Soporte y preguntas", privacidad:"Privacidad" },
-  en: { eyebrow:"For iPhone · In 6 languages", h1:"Your Camino de Santiago,<em>even with no signal</em>", sub:"How many km are left, what each village has and where to sleep. 15 routes and 3,000+ albergues, in your pocket.", storeSmall:"Download on the", ctaCorto:"Download", verMas:"See what it does", android:"On Android? The Android version is coming soon to Google Play.", androidNow:"You're on Android: the Android version is coming soon to Google Play. Meanwhile, share it with friends who have an iPhone.",
-    qrT:"Point your phone", qr:"Scan the code with your iPhone camera to download it.", p1:"Works with no signal", p2:"No ads", p3:"No sign-up",
-    queT:"Everything you need <em>on the Camino</em>", que:"Made to use while walking: big, clear and independent of signal.",
-    f1t:"Know when you <em>arrive</em>", f1:"Beds and arrival time at every albergue, at your own pace, walking or cycling. Change of plans? Replan from where you are.",
+    asocT:"¿Sois una asociación del Camino?", asoc:"Publicad vuestro camino en CaminoMate con vuestro nombre: trazado, etapas y alojamientos que vuestros voluntarios actualizan desde un panel web, un código en vuestra guía de papel y los avisos de señalización directamente a la asociación. Ya trabajamos así con una asociación francesa.", asocCta:"Escribidnos →",
+    finalT:"Santiago te espera.<em>Llega con CaminoMate.</em>", final:"Descárgala antes de salir: tus etapas y albergues te acompañan aunque te quedes sin cobertura.", qrT:"¿Estás en el ordenador?", qr:"Escanea con la cámara del iPhone y descárgala.",
+    barra:"El Camino de Santiago, sin cobertura", contacto:"Contacto:", soporte:"Soporte y preguntas", privacidad:"Privacidad", fotos:"Fotos:" },
+  en: { chip:"New version · In 6 languages", h1:"Your Camino,<em>no signal needed.</em>", sub:"How many km are left, what each village has and where to sleep tonight. 15 routes to Santiago on your iPhone.", storeSmall:"Download on the", ctaCorto:"Download", verMas:"See how it works", android:"Android? Coming soon to Google Play.", androidNow:"You're on Android: CaminoMate is coming soon to Google Play. Meanwhile, share it with friends on iPhone.",
+    p1:"Works offline", p2:"No ads", p3:"No sign-up", c1:"routes to Santiago", c2:"albergues with prices", c3:"languages", c4:"ads",
+    queT:"Made to use <span class='acc'>while walking</span>", que:"Big, clear and independent of signal. This is what you carry in your pocket.", desliza:"Swipe to see more →",
+    f0t:"The km you have left, <em>live</em>", f0:"Your position on the real trail, the km to Santiago and your arrival time at your own pace. Plus an alert if you leave the Camino.",
     f2t:"Every stage, <em>town by town</em>", f2:"The stage profile and what each village has: bar, shop, pharmacy, fountain and where to sleep.",
     f3t:"The real trail, <em>never lost</em>", f3:"Satellite map with the trail, albergues, fountains and pharmacies. And alerts from other pilgrims: dry fountain, full albergue, detour.",
+    f1t:"Know when you <em>arrive</em>", f1:"Beds and arrival time at every albergue, at your own pace, walking or cycling. Change of plans? Replan from where you are.",
     f4t:"Everything about <em>each albergue</em>", f4:"Beds, price, opening season and services, pilgrim reviews and the \"full today\" warning.",
-    rutasT:"15 routes", rutas:"Each with its real map and elevation profile.",
-    planesT:"The essentials, <em>free</em>", gratisT:"Free", gratisTag:"Forever, no ads", gratis:["All 15 routes with map and profile","Stages town by town","Albergues with prices and services","GPS and walking mode","Pilgrim alerts and Ultreia, the community"],
+    offT:"No signal?<em>No problem.</em>", o1t:"Works offline", o1:"Stages, albergues and your progress always stay on your phone, even in the middle of the hills.", o2t:"GPS on the trail", o2:"Know where you are and how far is left, even without data.", o3t:"Where to sleep", o3:"Albergues with beds, prices and services, to decide on the go.",
+    rutasT:"15 routes, <span class='acc'>one pocket</span>", rutas:"Each with its real map and elevation profile.",
+    planesT:"The essentials, <span class='acc'>free</span>", gratisT:"Free", gratisTag:"Forever, no ads", gratis:["All 15 routes with map and profile","Stages town by town","Albergues with prices and services","GPS and walking mode","Pilgrim alerts and Ultreia, the community"],
     paseT:"Camino Pass", paseTag:"Optional · one-time payment", pase:["Maps of the whole route for no signal","Hourly rain and radar on the map","Beds and replanning from where you are","Stats, credential, certificate and PDF diary"], paseNota:"It doesn't renew. There's also \"Forever\", with the same and no expiry. The first time you start walking you get 48 hours with everything included.",
-    bandaT:"Let the Camino find you ready", banda:"Download it before you set off: your stages and albergues stay with you even when the signal doesn't.",
     oiaT:"Made on the Camino", oia:"CaminoMate is made by Alex in Oia, a fishing village on the Portuguese Coastal Way. Pilgrims walk past his house every day: that's where everything in the app comes from.",
-    asocT:"Are you a Camino association?", asoc:"Publish your route in CaminoMate under your name: track, stages and lodgings your volunteers update from a web panel, a code in your paper guide, and waymarking reports sent straight to you. We already work this way with a French association.", asocCta:"Write to us",
-    barra:"The Camino de Santiago, offline", contacto:"Contact:", soporte:"Support and FAQ", privacidad:"Privacy" },
-  fr: { eyebrow:"Pour iPhone · En 6 langues", h1:"Votre Chemin de Compostelle,<em>même sans réseau</em>", sub:"Les km restants, ce qu'il y a dans chaque village et où dormir. 15 chemins et plus de 3 000 hébergements, dans votre poche.", storeSmall:"Télécharger dans l'", ctaCorto:"Télécharger", verMas:"Ce qu'elle fait", android:"Sur Android ? La version Android arrive bientôt sur Google Play.", androidNow:"Vous êtes sur Android : la version Android arrive bientôt sur Google Play. En attendant, partagez-la avec vos amis sur iPhone.",
-    qrT:"Visez avec le téléphone", qr:"Scannez le code avec l'appareil photo de l'iPhone pour la télécharger.", p1:"Fonctionne sans réseau", p2:"Sans publicité", p3:"Sans inscription",
-    queT:"Tout ce qu'il vous faut <em>sur le Chemin</em>", que:"Pensée pour s'en servir en marchant : grande, claire et sans dépendre du réseau.",
-    f1t:"Sachez quand vous <em>arrivez</em>", f1:"Places et heure d'arrivée à chaque gîte, à votre rythme, à pied ou à vélo. Un changement de plan ? Replanifiez depuis votre position.",
+    asocT:"Are you a Camino association?", asoc:"Publish your route in CaminoMate under your name: track, stages and lodgings your volunteers update from a web panel, a code in your paper guide, and waymarking reports sent straight to you. We already work this way with a French association.", asocCta:"Write to us →",
+    finalT:"Santiago is waiting.<em>Get there with CaminoMate.</em>", final:"Download it before you set off: your stages and albergues stay with you even when the signal doesn't.", qrT:"On a computer?", qr:"Scan with your iPhone camera to download it.",
+    barra:"The Camino de Santiago, offline", contacto:"Contact:", soporte:"Support and FAQ", privacidad:"Privacy", fotos:"Photos:" },
+  fr: { chip:"Nouvelle version · En 6 langues", h1:"Votre Chemin,<em>même sans réseau.</em>", sub:"Les km restants, ce qu'il y a dans chaque village et où dormir ce soir. 15 chemins vers Compostelle sur votre iPhone.", storeSmall:"Télécharger dans l'", ctaCorto:"Télécharger", verMas:"Voir comment ça marche", android:"Android ? Bientôt sur Google Play.", androidNow:"Vous êtes sur Android : CaminoMate arrive bientôt sur Google Play. En attendant, partagez-la avec vos amis sur iPhone.",
+    p1:"Hors ligne", p2:"Sans publicité", p3:"Sans inscription", c1:"chemins vers Compostelle", c2:"hébergements avec prix", c3:"langues", c4:"publicités",
+    queT:"Pensée pour <span class='acc'>marcher</span>", que:"Grande, claire et sans dépendre du réseau. Voici ce que vous avez en poche.", desliza:"Faites glisser pour voir la suite →",
+    f0t:"Les km restants, <em>en direct</em>", f0:"Votre position sur le vrai tracé, les km jusqu'à Saint-Jacques et l'heure d'arrivée à votre rythme. Et une alerte si vous quittez le Chemin.",
     f2t:"Chaque étape, <em>village par village</em>", f2:"Le profil de l'étape et ce qu'offre chaque village : bar, épicerie, pharmacie, fontaine et où dormir.",
     f3t:"Le vrai tracé, <em>sans vous perdre</em>", f3:"Carte satellite avec le tracé, gîtes, fontaines et pharmacies. Et les alertes des autres pèlerins : fontaine à sec, gîte complet, déviation.",
+    f1t:"Sachez quand vous <em>arrivez</em>", f1:"Places et heure d'arrivée à chaque gîte, à votre rythme, à pied ou à vélo. Un changement de plan ? Replanifiez depuis votre position.",
     f4t:"Tout sur <em>chaque gîte</em>", f4:"Places, prix, saison d'ouverture et services, avis de pèlerins et l'alerte « complet aujourd'hui ».",
-    rutasT:"15 chemins", rutas:"Chacun avec sa carte et son profil de dénivelé réels.",
-    planesT:"L'essentiel, <em>gratuit</em>", gratisT:"Gratuit", gratisTag:"Pour toujours, sans publicité", gratis:["Les 15 chemins avec carte et profil","Étapes village par village","Hébergements avec prix et services","GPS et mode marche","Alertes entre pèlerins et Ultreia, la communauté"],
+    offT:"Pas de réseau ?<em>Pas de problème.</em>", o1t:"Fonctionne hors ligne", o1:"Étapes, hébergements et votre progression restent sur le téléphone, même en pleine montagne.", o2t:"GPS sur le tracé", o2:"Vous savez où vous êtes et ce qu'il reste, même sans données.", o3t:"Où dormir", o3:"Hébergements avec places, prix et services, pour décider en route.",
+    rutasT:"15 chemins, <span class='acc'>une seule poche</span>", rutas:"Chacun avec sa carte et son profil de dénivelé réels.",
+    planesT:"L'essentiel, <span class='acc'>gratuit</span>", gratisT:"Gratuit", gratisTag:"Pour toujours, sans publicité", gratis:["Les 15 chemins avec carte et profil","Étapes village par village","Hébergements avec prix et services","GPS et mode marche","Alertes entre pèlerins et Ultreia, la communauté"],
     paseT:"Pass Camino", paseTag:"Facultatif · paiement unique", pase:["Cartes de tout le chemin hors ligne","Pluie heure par heure et radar","Lits et replanification depuis votre position","Statistiques, crédential, certificat et carnet PDF"], paseNota:"Sans renouvellement. Il existe aussi « Pour toujours », identique et sans expiration. La première fois que vous marchez, vous avez 48 heures avec tout inclus.",
-    bandaT:"Partez avec elle dans la poche", banda:"Téléchargez-la avant de partir : vos étapes et vos gîtes restent avec vous, même sans réseau.",
     oiaT:"Faite sur le Chemin", oia:"CaminoMate est créée par Alex à Oia, un village de pêcheurs sur le Chemin portugais de la côte. Les pèlerins passent chaque jour devant chez lui : tout ce que contient l'appli vient de là.",
-    asocT:"Vous êtes une association jacquaire ?", asoc:"Publiez votre chemin dans CaminoMate sous votre nom : tracé, étapes et hébergements que vos bénévoles mettent à jour depuis un panneau web, un code dans votre guide papier, et les signalements de balisage envoyés directement à vous. Nous travaillons déjà ainsi avec une association française.", asocCta:"Écrivez-nous",
-    barra:"Le Chemin de Compostelle, hors ligne", contacto:"Contact :", soporte:"Aide et questions", privacidad:"Confidentialité" },
-  de: { eyebrow:"Für iPhone · In 6 Sprachen", h1:"Dein Jakobsweg,<em>auch ohne Netz</em>", sub:"Wie viele Kilometer noch, was jedes Dorf bietet und wo du schläfst. 15 Wege und über 3.000 Herbergen, in der Tasche.", storeSmall:"Laden im", ctaCorto:"Laden", verMas:"Was sie kann", android:"Android? Die Android-Version kommt bald zu Google Play.", androidNow:"Du nutzt Android: die Android-Version kommt bald zu Google Play. Bis dahin kannst du sie Freunden mit iPhone zeigen.",
-    qrT:"Mit dem Handy scannen", qr:"Scanne den Code mit der iPhone-Kamera und lade sie herunter.", p1:"Funktioniert ohne Netz", p2:"Ohne Werbung", p3:"Ohne Anmeldung",
-    queT:"Alles, was du <em>auf dem Camino</em> brauchst", que:"Gemacht für unterwegs: groß, klar und unabhängig vom Netz.",
-    f1t:"Wisse, wann du <em>ankommst</em>", f1:"Betten und Ankunftszeit an jeder Herberge, in deinem Tempo, zu Fuß oder mit dem Rad. Planänderung? Neu planen, wo du gerade bist.",
+    asocT:"Vous êtes une association jacquaire ?", asoc:"Publiez votre chemin dans CaminoMate sous votre nom : tracé, étapes et hébergements que vos bénévoles mettent à jour depuis un panneau web, un code dans votre guide papier, et les signalements de balisage envoyés directement à vous. Nous travaillons déjà ainsi avec une association française.", asocCta:"Écrivez-nous →",
+    finalT:"Saint-Jacques vous attend.<em>Arrivez-y avec CaminoMate.</em>", final:"Téléchargez-la avant de partir : vos étapes et vos gîtes restent avec vous, même sans réseau.", qrT:"Sur un ordinateur ?", qr:"Scannez avec l'appareil photo de l'iPhone pour la télécharger.",
+    barra:"Le Chemin de Compostelle, hors ligne", contacto:"Contact :", soporte:"Aide et questions", privacidad:"Confidentialité", fotos:"Photos :" },
+  de: { chip:"Neue Version · In 6 Sprachen", h1:"Dein Camino,<em>auch ohne Netz.</em>", sub:"Wie viele Kilometer noch, was jedes Dorf bietet und wo du heute schläfst. 15 Wege nach Santiago auf deinem iPhone.", storeSmall:"Laden im", ctaCorto:"Laden", verMas:"So funktioniert's", android:"Android? Bald bei Google Play.", androidNow:"Du nutzt Android: CaminoMate kommt bald zu Google Play. Bis dahin kannst du sie Freunden mit iPhone zeigen.",
+    p1:"Offline", p2:"Ohne Werbung", p3:"Ohne Anmeldung", c1:"Wege nach Santiago", c2:"Herbergen mit Preisen", c3:"Sprachen", c4:"Werbung",
+    queT:"Gemacht für <span class='acc'>unterwegs</span>", que:"Groß, klar und unabhängig vom Netz. Das hast du in der Tasche.", desliza:"Wischen für mehr →",
+    f0t:"Die Kilometer bis Santiago, <em>live</em>", f0:"Deine Position auf dem echten Weg, die Kilometer bis Santiago und deine Ankunftszeit in deinem Tempo. Und eine Warnung, wenn du vom Weg abkommst.",
     f2t:"Jede Etappe, <em>Ort für Ort</em>", f2:"Das Höhenprofil und was jedes Dorf bietet: Bar, Laden, Apotheke, Brunnen und Übernachtung.",
     f3t:"Der echte Weg, <em>ohne dich zu verirren</em>", f3:"Satellitenkarte mit Route, Herbergen, Brunnen und Apotheken. Und Hinweise anderer Pilger: Brunnen trocken, Herberge voll, Umleitung.",
+    f1t:"Wisse, wann du <em>ankommst</em>", f1:"Betten und Ankunftszeit an jeder Herberge, in deinem Tempo, zu Fuß oder mit dem Rad. Planänderung? Neu planen, wo du gerade bist.",
     f4t:"Alles über <em>jede Herberge</em>", f4:"Betten, Preis, Saison und Services, Bewertungen von Pilgern und der Hinweis „heute voll“.",
-    rutasT:"15 Wege", rutas:"Jeder mit echter Karte und echtem Höhenprofil.",
-    planesT:"Das Wichtigste, <em>kostenlos</em>", gratisT:"Kostenlos", gratisTag:"Für immer, ohne Werbung", gratis:["Alle 15 Wege mit Karte und Profil","Etappen Ort für Ort","Herbergen mit Preis und Services","GPS und Gehmodus","Hinweise unter Pilgern und Ultreia, die Gemeinschaft"],
+    offT:"Kein Netz?<em>Kein Problem.</em>", o1t:"Funktioniert offline", o1:"Etappen, Herbergen und dein Fortschritt bleiben auf dem Handy, auch mitten in den Bergen.", o2t:"GPS auf dem Weg", o2:"Du weißt, wo du bist und wie weit es noch ist, auch ohne Daten.", o3t:"Wo du schläfst", o3:"Herbergen mit Betten, Preisen und Services, um unterwegs zu entscheiden.",
+    rutasT:"15 Wege, <span class='acc'>eine Tasche</span>", rutas:"Jeder mit echter Karte und echtem Höhenprofil.",
+    planesT:"Das Wichtigste, <span class='acc'>kostenlos</span>", gratisT:"Kostenlos", gratisTag:"Für immer, ohne Werbung", gratis:["Alle 15 Wege mit Karte und Profil","Etappen Ort für Ort","Herbergen mit Preis und Services","GPS und Gehmodus","Hinweise unter Pilgern und Ultreia, die Gemeinschaft"],
     paseT:"Camino-Pass", paseTag:"Optional · einmalige Zahlung", pase:["Karten der ganzen Strecke offline","Regen stündlich und Radar auf der Karte","Betten und Neuplanung vom Standort aus","Statistiken, Pilgerpass, Urkunde und PDF-Tagebuch"], paseNota:"Verlängert sich nicht. Es gibt auch „Für immer“, mit demselben Inhalt ohne Ablauf. Beim ersten Losgehen hast du 48 Stunden alles inklusive.",
-    bandaT:"Geh mit ihr los", banda:"Lade sie vor dem Start herunter: deine Etappen und Herbergen bleiben dabei, auch wenn das Netz weg ist.",
     oiaT:"Am Camino gemacht", oia:"CaminoMate macht Alex in Oia, einem Fischerdorf am Küstenweg des Camino Portugués. Jeden Tag gehen Pilger an seinem Haus vorbei: daher kommt alles, was die App kann.",
-    asocT:"Sind Sie ein Jakobusverein?", asoc:"Veröffentlichen Sie Ihren Weg unter Ihrem Namen in CaminoMate: Route, Etappen und Unterkünfte, die Ihre Ehrenamtlichen über ein Web-Panel pflegen, ein Code in Ihrem gedruckten Führer, und Meldungen zur Markierung direkt an Sie. So arbeiten wir bereits mit einem französischen Verein.", asocCta:"Schreiben Sie uns",
-    barra:"Der Jakobsweg, offline", contacto:"Kontakt:", soporte:"Hilfe und Fragen", privacidad:"Datenschutz" },
-  it: { eyebrow:"Per iPhone · In 6 lingue", h1:"Il tuo Cammino di Santiago,<em>anche senza campo</em>", sub:"Quanti km mancano, cosa c'è in ogni paese e dove dormire. 15 cammini e oltre 3.000 albergue, in tasca.", storeSmall:"Scarica su", ctaCorto:"Scarica", verMas:"Cosa fa", android:"Hai Android? La versione Android arriva presto su Google Play.", androidNow:"Sei su Android: la versione Android arriva presto su Google Play. Nel frattempo, condividila con chi ha un iPhone.",
-    qrT:"Inquadra con il telefono", qr:"Scansiona il codice con la fotocamera dell'iPhone per scaricarla.", p1:"Funziona senza campo", p2:"Senza pubblicità", p3:"Senza registrazione",
-    queT:"Tutto quello che serve <em>sul Cammino</em>", que:"Fatta per usarla camminando: grande, chiara e indipendente dal campo.",
-    f1t:"Sai a che ora <em>arrivi</em>", f1:"Posti e ora di arrivo a ogni albergue, al tuo ritmo, a piedi o in bici. Cambi programma? Ripianifichi da dove sei.",
+    asocT:"Sind Sie ein Jakobusverein?", asoc:"Veröffentlichen Sie Ihren Weg unter Ihrem Namen in CaminoMate: Route, Etappen und Unterkünfte, die Ihre Ehrenamtlichen über ein Web-Panel pflegen, ein Code in Ihrem gedruckten Führer, und Meldungen zur Markierung direkt an Sie. So arbeiten wir bereits mit einem französischen Verein.", asocCta:"Schreiben Sie uns →",
+    finalT:"Santiago wartet.<em>Komm mit CaminoMate an.</em>", final:"Lade sie vor dem Start herunter: deine Etappen und Herbergen bleiben dabei, auch wenn das Netz weg ist.", qrT:"Am Computer?", qr:"Mit der iPhone-Kamera scannen und herunterladen.",
+    barra:"Der Jakobsweg, offline", contacto:"Kontakt:", soporte:"Hilfe und Fragen", privacidad:"Datenschutz", fotos:"Fotos:" },
+  it: { chip:"Nuova versione · In 6 lingue", h1:"Il tuo Cammino,<em>anche senza campo.</em>", sub:"Quanti km mancano, cosa c'è in ogni paese e dove dormire stanotte. 15 cammini verso Santiago sul tuo iPhone.", storeSmall:"Scarica su", ctaCorto:"Scarica", verMas:"Come funziona", android:"Android? Presto su Google Play.", androidNow:"Sei su Android: CaminoMate arriva presto su Google Play. Nel frattempo, condividila con chi ha un iPhone.",
+    p1:"Offline", p2:"Senza pubblicità", p3:"Senza registrazione", c1:"cammini verso Santiago", c2:"albergue con prezzi", c3:"lingue", c4:"pubblicità",
+    queT:"Fatta per usarla <span class='acc'>camminando</span>", que:"Grande, chiara e indipendente dal campo. Ecco cosa porti in tasca.", desliza:"Scorri per vedere di più →",
+    f0t:"I km che mancano, <em>dal vivo</em>", f0:"La tua posizione sul tracciato reale, i km a Santiago e l'ora di arrivo al tuo ritmo. E un avviso se esci dal Cammino.",
     f2t:"Ogni tappa, <em>paese per paese</em>", f2:"Il profilo della tappa e cosa c'è in ogni paese: bar, negozio, farmacia, fontana e dove dormire.",
     f3t:"Il tracciato reale, <em>senza perderti</em>", f3:"Mappa satellitare con il tracciato, albergue, fontane e farmacie. E gli avvisi degli altri pellegrini: fontana a secco, albergue pieno, deviazione.",
+    f1t:"Sai a che ora <em>arrivi</em>", f1:"Posti e ora di arrivo a ogni albergue, al tuo ritmo, a piedi o in bici. Cambi programma? Ripianifichi da dove sei.",
     f4t:"Tutto su <em>ogni albergue</em>", f4:"Posti, prezzo, stagione di apertura e servizi, recensioni dei pellegrini e l'avviso «pieno oggi».",
-    rutasT:"15 cammini", rutas:"Ognuno con la sua mappa e il profilo altimetrico reale.",
-    planesT:"L'essenziale, <em>gratis</em>", gratisT:"Gratis", gratisTag:"Per sempre, senza pubblicità", gratis:["Tutti i 15 cammini con mappa e profilo","Tappe paese per paese","Albergue con prezzi e servizi","GPS e modalità cammino","Avvisi tra pellegrini e Ultreia, la comunità"],
+    offT:"Senza campo?<em>Nessun problema.</em>", o1t:"Funziona offline", o1:"Tappe, albergue e i tuoi progressi restano sul telefono, anche in mezzo ai monti.", o2t:"GPS sul tracciato", o2:"Sai dove sei e quanto manca, anche senza dati.", o3t:"Dove dormire", o3:"Albergue con posti, prezzi e servizi, per decidere strada facendo.",
+    rutasT:"15 cammini, <span class='acc'>una sola tasca</span>", rutas:"Ognuno con la sua mappa e il profilo altimetrico reale.",
+    planesT:"L'essenziale, <span class='acc'>gratis</span>", gratisT:"Gratis", gratisTag:"Per sempre, senza pubblicità", gratis:["Tutti i 15 cammini con mappa e profilo","Tappe paese per paese","Albergue con prezzi e servizi","GPS e modalità cammino","Avvisi tra pellegrini e Ultreia, la comunità"],
     paseT:"Pass Cammino", paseTag:"Facoltativo · pagamento unico", pase:["Mappe di tutto il percorso offline","Pioggia ora per ora e radar","Letti e ripianificazione da dove sei","Statistiche, credenziale, certificato e diario PDF"], paseNota:"Non si rinnova. C'è anche «Per sempre», uguale e senza scadenza. La prima volta che inizi a camminare hai 48 ore con tutto incluso.",
-    bandaT:"Parti con lei in tasca", banda:"Scaricala prima di partire: tappe e albergue restano con te anche senza campo.",
     oiaT:"Fatta sul Cammino", oia:"CaminoMate la fa Alex a Oia, un paese di pescatori sul Cammino Portoghese della Costa. I pellegrini passano ogni giorno davanti a casa sua: tutto quello che c'è nell'app nasce da lì.",
-    asocT:"Siete un'associazione jacopea?", asoc:"Pubblicate il vostro cammino in CaminoMate con il vostro nome: tracciato, tappe e alloggi che i vostri volontari aggiornano da un pannello web, un codice nella guida cartacea e le segnalazioni sulla segnaletica direttamente a voi. Lavoriamo già così con un'associazione francese.", asocCta:"Scriveteci",
-    barra:"Il Cammino di Santiago, offline", contacto:"Contatto:", soporte:"Assistenza e domande", privacidad:"Privacy" },
-  pt: { eyebrow:"Para iPhone · Em 6 idiomas", h1:"O teu Caminho de Santiago,<em>mesmo sem rede</em>", sub:"Quantos km faltam, o que há em cada aldeia e onde dormir. 15 caminhos e mais de 3.000 albergues, no bolso.", storeSmall:"Descarregar na", ctaCorto:"Descarregar", verMas:"O que faz", android:"Tens Android? A versão Android chega em breve ao Google Play.", androidNow:"Estás em Android: a versão Android chega em breve ao Google Play. Entretanto, partilha-a com quem tem iPhone.",
-    qrT:"Aponta com o telemóvel", qr:"Lê o código com a câmara do iPhone para a descarregar.", p1:"Funciona sem rede", p2:"Sem anúncios", p3:"Sem registo",
-    queT:"Tudo o que precisas <em>no Caminho</em>", que:"Feita para usar a caminhar: grande, clara e sem depender da rede.",
-    f1t:"Sabes a que horas <em>chegas</em>", f1:"Camas e hora de chegada a cada albergue, ao teu ritmo, a pé ou de bicicleta. Mudaste de planos? Replaneia a partir de onde estás.",
+    asocT:"Siete un'associazione jacopea?", asoc:"Pubblicate il vostro cammino in CaminoMate con il vostro nome: tracciato, tappe e alloggi che i vostri volontari aggiornano da un pannello web, un codice nella guida cartacea e le segnalazioni sulla segnaletica direttamente a voi. Lavoriamo già così con un'associazione francese.", asocCta:"Scriveteci →",
+    finalT:"Santiago ti aspetta.<em>Arrivaci con CaminoMate.</em>", final:"Scaricala prima di partire: tappe e albergue restano con te anche senza campo.", qrT:"Sei al computer?", qr:"Scansiona con la fotocamera dell'iPhone per scaricarla.",
+    barra:"Il Cammino di Santiago, offline", contacto:"Contatto:", soporte:"Assistenza e domande", privacidad:"Privacy", fotos:"Foto:" },
+  pt: { chip:"Nova versão · Em 6 idiomas", h1:"O teu Caminho,<em>mesmo sem rede.</em>", sub:"Quantos km faltam, o que há em cada aldeia e onde dormir esta noite. 15 caminhos até Santiago no teu iPhone.", storeSmall:"Descarregar na", ctaCorto:"Descarregar", verMas:"Ver como funciona", android:"Android? Em breve no Google Play.", androidNow:"Estás em Android: o CaminoMate chega em breve ao Google Play. Entretanto, partilha-a com quem tem iPhone.",
+    p1:"Sem rede", p2:"Sem anúncios", p3:"Sem registo", c1:"caminhos até Santiago", c2:"albergues com preço", c3:"idiomas", c4:"anúncios",
+    queT:"Feita para usar <span class='acc'>a caminhar</span>", que:"Grande, clara e sem depender da rede. É isto que levas no bolso.", desliza:"Desliza para ver mais →",
+    f0t:"Os km que faltam, <em>ao vivo</em>", f0:"A tua posição sobre o traçado real, os km até Santiago e a hora de chegada ao teu ritmo. E um aviso se saíres do Caminho.",
     f2t:"Cada etapa, <em>aldeia a aldeia</em>", f2:"O perfil da etapa e o que há em cada aldeia: café, loja, farmácia, fonte e onde dormir.",
     f3t:"O traçado real, <em>sem te perderes</em>", f3:"Mapa de satélite com o traçado, albergues, fontes e farmácias. E os avisos de outros peregrinos: fonte seca, albergue cheio, desvio.",
+    f1t:"Sabes a que horas <em>chegas</em>", f1:"Camas e hora de chegada a cada albergue, ao teu ritmo, a pé ou de bicicleta. Mudaste de planos? Replaneia a partir de onde estás.",
     f4t:"Tudo sobre <em>cada albergue</em>", f4:"Camas, preço, época de abertura e serviços, opiniões de peregrinos e o aviso «cheio hoje».",
-    rutasT:"15 caminhos", rutas:"Cada um com o seu mapa e perfil de altimetria reais.",
-    planesT:"O essencial, <em>grátis</em>", gratisT:"Grátis", gratisTag:"Para sempre, sem anúncios", gratis:["Os 15 caminhos com mapa e perfil","Etapas aldeia a aldeia","Albergues com preço e serviços","GPS e modo caminhada","Avisos entre peregrinos e Ultreia, a comunidade"],
+    offT:"Sem rede?<em>Sem problema.</em>", o1t:"Funciona sem rede", o1:"Etapas, albergues e o teu progresso ficam sempre no telemóvel, mesmo no meio da serra.", o2t:"GPS sobre o traçado", o2:"Sabes onde estás e quanto falta, mesmo sem dados.", o3t:"Onde dormir", o3:"Albergues com camas, preço e serviços, para decidir pelo caminho.",
+    rutasT:"15 caminhos, <span class='acc'>um só bolso</span>", rutas:"Cada um com o seu mapa e perfil de altimetria reais.",
+    planesT:"O essencial, <span class='acc'>grátis</span>", gratisT:"Grátis", gratisTag:"Para sempre, sem anúncios", gratis:["Os 15 caminhos com mapa e perfil","Etapas aldeia a aldeia","Albergues com preço e serviços","GPS e modo caminhada","Avisos entre peregrinos e Ultreia, a comunidade"],
     paseT:"Passe Caminho", paseTag:"Opcional · pagamento único", pase:["Mapas de todo o caminho sem rede","Chuva hora a hora e radar","Camas e replanear a partir de onde estás","Estatísticas, credencial, certificado e diário PDF"], paseNota:"Não se renova. Existe também «Para sempre», igual e sem prazo. Na primeira vez que começas a caminhar tens 48 horas com tudo incluído.",
-    bandaT:"Parte com ela no bolso", banda:"Descarrega-a antes de saíres: as tuas etapas e albergues ficam contigo mesmo sem rede.",
     oiaT:"Feita no Caminho", oia:"O CaminoMate é feito pelo Alex em Oia, uma aldeia piscatória do Caminho Português da Costa. Os peregrinos passam todos os dias à porta de casa dele: é daí que vem tudo o que a app tem.",
-    asocT:"São uma associação do Caminho?", asoc:"Publiquem o vosso caminho no CaminoMate com o vosso nome: traçado, etapas e alojamentos que os vossos voluntários atualizam num painel web, um código no vosso guia em papel e os avisos de sinalização diretamente para vós. Já trabalhamos assim com uma associação francesa.", asocCta:"Escrevam-nos",
-    barra:"O Caminho de Santiago, sem rede", contacto:"Contacto:", soporte:"Suporte e perguntas", privacidad:"Privacidade" },
+    asocT:"São uma associação do Caminho?", asoc:"Publiquem o vosso caminho no CaminoMate com o vosso nome: traçado, etapas e alojamentos que os vossos voluntários atualizam num painel web, um código no vosso guia em papel e os avisos de sinalização diretamente para vós. Já trabalhamos assim com uma associação francesa.", asocCta:"Escrevam-nos →",
+    finalT:"Santiago espera-te.<em>Chega com o CaminoMate.</em>", final:"Descarrega-a antes de saíres: as tuas etapas e albergues ficam contigo mesmo sem rede.", qrT:"Estás no computador?", qr:"Lê com a câmara do iPhone para a descarregar.",
+    barra:"O Caminho de Santiago, sem rede", contacto:"Contacto:", soporte:"Suporte e perguntas", privacidad:"Privacidade", fotos:"Fotos:" },
 };
 const esAndroid = /Android/i.test(navigator.userAgent);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const pick = () => { try { const q = new URLSearchParams(location.search).get("lang"); if (q && T[q]) return q; } catch (e) {}
   try { const s = localStorage.getItem("cm_lang"); if (s && T[s]) return s; } catch (e) {}
   for (const l of (navigator.languages || [navigator.language || "es"])) { const k = String(l).slice(0, 2).toLowerCase(); if (T[k]) return k; } return "en"; };
@@ -353,15 +496,40 @@ function aplicar(l) {
 }
 document.getElementById("lang").addEventListener("change", (e) => { try { localStorage.setItem("cm_lang", e.target.value); } catch (er) {} aplicar(e.target.value); });
 aplicar(pick());
-// QR para pasar del ordenador al móvil
+
+// cinta de caminos (duplicada para que el bucle no se note) y nube de caminos
+const cintaHtml = RUTAS.map((r) => `<span>${r}</span>`).join("");
+document.getElementById("pista").innerHTML = cintaHtml + cintaHtml;
+document.getElementById("rutas").innerHTML = RUTAS.map((r) => `<span>${r}</span>`).join("");
+
+// QR del ordenador al móvil
 try { const q = qrcode(0, "M"); q.addData(APP); q.make(); document.getElementById("qr").innerHTML = q.createSvgTag({ cellSize: 3, margin: 0, scalable: true }); } catch (e) { document.querySelector(".qr").style.display = "none"; }
-// Cabecera y barra de descarga al hacer scroll
-const cab = document.getElementById("top"), barra = document.getElementById("barra");
-const onScroll = () => { const y = window.scrollY; cab.classList.toggle("scrolled", y > 40); barra.classList.toggle("on", y > 520 && (window.innerHeight + y) < document.body.scrollHeight - 140); };
+
+// cabecera, barra y parallax
+const cab = document.getElementById("cab"), barra = document.getElementById("barra"), bosque = document.getElementById("bgBosque");
+const onScroll = () => {
+  const y = scrollY; cab.classList.toggle("scrolled", y > 40);
+  barra.classList.toggle("on", y > 560 && (innerHeight + y) < document.body.scrollHeight - 260);
+  if (!reduce && bosque) { const r = bosque.parentElement.getBoundingClientRect(); bosque.style.transform = `translateY(${(r.top / innerHeight) * -60}px)`; }
+};
 addEventListener("scroll", onScroll, { passive: true }); onScroll();
-// Aparición suave de los bloques
-const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .12 }) : null;
-document.querySelectorAll(".rv").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
+
+// abanico que sigue al ratón
+const fan = document.getElementById("fan");
+if (!reduce && matchMedia("(hover: hover)").matches) fan.addEventListener("mousemove", (e) => { const r = fan.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; fan.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 8}deg)`; });
+fan.addEventListener("mouseleave", () => { fan.style.transform = ""; });
+
+// aparición, contadores y móvil fijo que cambia de pantalla
+const io = new IntersectionObserver((es) => es.forEach((x) => { if (!x.isIntersecting) return; x.target.classList.add("in"); io.unobserve(x.target);
+  x.target.querySelectorAll("[data-count]").forEach((b) => { const fin = +b.dataset.count, plus = b.dataset.plus ? "+" : "", t0 = performance.now(), dur = 1400;
+    const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, document.documentElement.lang === "en" ? "," : ".");
+    if (reduce) { b.textContent = fmt(fin) + plus; return; }
+    const paso = (t) => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); b.textContent = fmt(Math.round(fin * e)) + (p === 1 ? plus : ""); if (p < 1) requestAnimationFrame(paso); }; requestAnimationFrame(paso); });
+}), { threshold: .15 });
+document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+const fijo = [...document.querySelectorAll("#fijo img")], pasos = [...document.querySelectorAll(".paso")];
+const io2 = new IntersectionObserver((es) => es.forEach((x) => { if (!x.isIntersecting) return; const i = +x.target.dataset.i; pasos.forEach((p) => p.classList.toggle("on", p === x.target)); fijo.forEach((im, k) => im.classList.toggle("on", k === i)); }), { rootMargin: "-45% 0px -45% 0px" });
+pasos.forEach((p) => io2.observe(p));
 </script>
 </body>
 </html>
