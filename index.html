@@ -329,6 +329,7 @@
     <div class="wrap">
       <div class="titulo rv"><h2 data-t="rutasT"></h2><p data-t="rutas"></p></div>
       <div class="rutas rv" id="rutas"></div>
+      <p class="rv" style="text-align:center;margin-top:26px"><a class="ghost guias-link" href="caminos/" data-t="guiasCta" style="display:inline-block"></a></p>
     </div>
   </section>
 
@@ -371,7 +372,7 @@
   <div class="wrap">
     <div class="fila">
       <span>© 2026 CaminoMate · <span data-t="contacto"></span> <a href="mailto:fastsetupalex@gmail.com">fastsetupalex@gmail.com</a></span>
-      <nav><a href="soporte.html" data-t="soporte"></a><a href="privacy.html" data-t="privacidad"></a></nav>
+      <nav><a class="guias-link" href="caminos/" data-t="guias"></a><a href="soporte.html" data-t="soporte"></a><a href="privacy.html" data-t="privacidad"></a></nav>
     </div>
     <p class="creditos"><span data-t="fotos"></span> <a href="https://commons.wikimedia.org/wiki/File:O_Cebreiro,_Pedrafita_do_Cebreiro,_Galicia_(Spain)._Vistas.jpg">O Cebreiro</a>: amaianos, CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Camino_de_Santiago_outside_Arzua.jpg">Arzúa</a>: miketnorton, CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Catedral_de_Santiago_de_Compostela,_la_Praza_do_Obradoiro.jpg">Catedral de Santiago</a>: D.Rovchak, CC BY-SA 4.0 · Wikimedia Commons</p>
   </div>
@@ -388,7 +389,7 @@
 const APP = "https://apps.apple.com/app/caminomate/id6784231388";
 const RUTAS = ["Francés","Portugués · Costa","Norte","Primitivo","Portugués · Central","Inglés","Vía de la Plata","Invierno","Francés · Sarria","Fisterra-Muxía","Aragonés","Baztanés","Lebaniego","Olvidado","Via Adresca"];
 const T = {
-  es: { chip:"Nueva versión · En 6 idiomas", h1:"Tu Camino,<em>sin cobertura.</em>", sub:"Cuántos km te quedan, qué hay en cada pueblo y dónde dormir esta noche. 15 caminos a Santiago en tu iPhone.", storeSmall:"Descárgala en el", ctaCorto:"Descargar", verMas:"Ver cómo funciona", android:"¿Android? Muy pronto en Google Play.", androidNow:"Estás en Android: CaminoMate llega muy pronto a Google Play. Mientras, pásasela a quien vaya con iPhone.",
+  es: { guias:"Guías de los caminos", guiasCta:"Ver la guía de todas las etapas →", chip:"Nueva versión · En 6 idiomas", h1:"Tu Camino,<em>sin cobertura.</em>", sub:"Cuántos km te quedan, qué hay en cada pueblo y dónde dormir esta noche. 15 caminos a Santiago en tu iPhone.", storeSmall:"Descárgala en el", ctaCorto:"Descargar", verMas:"Ver cómo funciona", android:"¿Android? Muy pronto en Google Play.", androidNow:"Estás en Android: CaminoMate llega muy pronto a Google Play. Mientras, pásasela a quien vaya con iPhone.",
     p1:"Sin cobertura", p2:"Sin anuncios", p3:"Sin registrarte", c1:"caminos a Santiago", c2:"albergues con precio", c3:"idiomas", c4:"anuncios",
     queT:"Hecha para usarla <span class='acc'>andando</span>", que:"Grande, clara y sin depender de la cobertura. Esto es lo que llevas en el bolsillo.", desliza:"Desliza para ver más →",
     f0t:"Cuántos km te quedan, <em>en vivo</em>", f0:"Tu posición sobre el trazado real, los km hasta Santiago y tu hora de llegada a tu ritmo. Y un aviso si te sales del Camino.",
@@ -404,7 +405,7 @@ const T = {
     asocT:"¿Sois una asociación del Camino?", asoc:"Publicad vuestro camino en CaminoMate con vuestro nombre: trazado, etapas y alojamientos que vuestros voluntarios actualizan desde un panel web, un código en vuestra guía de papel y los avisos de señalización directamente a la asociación. Ya trabajamos así con una asociación francesa.", asocCta:"Escribidnos →",
     finalT:"Santiago te espera.<em>Llega con CaminoMate.</em>", final:"Descárgala antes de salir: tus etapas y albergues te acompañan aunque te quedes sin cobertura.", qrT:"¿Estás en el ordenador?", qr:"Escanea con la cámara del iPhone y descárgala.",
     barra:"El Camino de Santiago, sin cobertura", contacto:"Contacto:", soporte:"Soporte y preguntas", privacidad:"Privacidad", fotos:"Fotos:" },
-  en: { chip:"New version · In 6 languages", h1:"Your Camino,<em>no signal needed.</em>", sub:"How many km are left, what each village has and where to sleep tonight. 15 routes to Santiago on your iPhone.", storeSmall:"Download on the", ctaCorto:"Download", verMas:"See how it works", android:"Android? Coming soon to Google Play.", androidNow:"You're on Android: CaminoMate is coming soon to Google Play. Meanwhile, share it with friends on iPhone.",
+  en: { guias:"Route guides", guiasCta:"See the guide to every stage →", chip:"New version · In 6 languages", h1:"Your Camino,<em>no signal needed.</em>", sub:"How many km are left, what each village has and where to sleep tonight. 15 routes to Santiago on your iPhone.", storeSmall:"Download on the", ctaCorto:"Download", verMas:"See how it works", android:"Android? Coming soon to Google Play.", androidNow:"You're on Android: CaminoMate is coming soon to Google Play. Meanwhile, share it with friends on iPhone.",
     p1:"Works offline", p2:"No ads", p3:"No sign-up", c1:"routes to Santiago", c2:"albergues with prices", c3:"languages", c4:"ads",
     queT:"Made to use <span class='acc'>while walking</span>", que:"Big, clear and independent of signal. This is what you carry in your pocket.", desliza:"Swipe to see more →",
     f0t:"The km you have left, <em>live</em>", f0:"Your position on the real trail, the km to Santiago and your arrival time at your own pace. Plus an alert if you leave the Camino.",
@@ -420,7 +421,7 @@ const T = {
     asocT:"Are you a Camino association?", asoc:"Publish your route in CaminoMate under your name: track, stages and lodgings your volunteers update from a web panel, a code in your paper guide, and waymarking reports sent straight to you. We already work this way with a French association.", asocCta:"Write to us →",
     finalT:"Santiago is waiting.<em>Get there with CaminoMate.</em>", final:"Download it before you set off: your stages and albergues stay with you even when the signal doesn't.", qrT:"On a computer?", qr:"Scan with your iPhone camera to download it.",
     barra:"The Camino de Santiago, offline", contacto:"Contact:", soporte:"Support and FAQ", privacidad:"Privacy", fotos:"Photos:" },
-  fr: { chip:"Nouvelle version · En 6 langues", h1:"Votre Chemin,<em>même sans réseau.</em>", sub:"Les km restants, ce qu'il y a dans chaque village et où dormir ce soir. 15 chemins vers Compostelle sur votre iPhone.", storeSmall:"Télécharger dans l'", ctaCorto:"Télécharger", verMas:"Voir comment ça marche", android:"Android ? Bientôt sur Google Play.", androidNow:"Vous êtes sur Android : CaminoMate arrive bientôt sur Google Play. En attendant, partagez-la avec vos amis sur iPhone.",
+  fr: { guias:"Guides des chemins", guiasCta:"Voir le guide de toutes les étapes →", chip:"Nouvelle version · En 6 langues", h1:"Votre Chemin,<em>même sans réseau.</em>", sub:"Les km restants, ce qu'il y a dans chaque village et où dormir ce soir. 15 chemins vers Compostelle sur votre iPhone.", storeSmall:"Télécharger dans l'", ctaCorto:"Télécharger", verMas:"Voir comment ça marche", android:"Android ? Bientôt sur Google Play.", androidNow:"Vous êtes sur Android : CaminoMate arrive bientôt sur Google Play. En attendant, partagez-la avec vos amis sur iPhone.",
     p1:"Hors ligne", p2:"Sans publicité", p3:"Sans inscription", c1:"chemins vers Compostelle", c2:"hébergements avec prix", c3:"langues", c4:"publicités",
     queT:"Pensée pour <span class='acc'>marcher</span>", que:"Grande, claire et sans dépendre du réseau. Voici ce que vous avez en poche.", desliza:"Faites glisser pour voir la suite →",
     f0t:"Les km restants, <em>en direct</em>", f0:"Votre position sur le vrai tracé, les km jusqu'à Saint-Jacques et l'heure d'arrivée à votre rythme. Et une alerte si vous quittez le Chemin.",
@@ -436,7 +437,7 @@ const T = {
     asocT:"Vous êtes une association jacquaire ?", asoc:"Publiez votre chemin dans CaminoMate sous votre nom : tracé, étapes et hébergements que vos bénévoles mettent à jour depuis un panneau web, un code dans votre guide papier, et les signalements de balisage envoyés directement à vous. Nous travaillons déjà ainsi avec une association française.", asocCta:"Écrivez-nous →",
     finalT:"Saint-Jacques vous attend.<em>Arrivez-y avec CaminoMate.</em>", final:"Téléchargez-la avant de partir : vos étapes et vos gîtes restent avec vous, même sans réseau.", qrT:"Sur un ordinateur ?", qr:"Scannez avec l'appareil photo de l'iPhone pour la télécharger.",
     barra:"Le Chemin de Compostelle, hors ligne", contacto:"Contact :", soporte:"Aide et questions", privacidad:"Confidentialité", fotos:"Photos :" },
-  de: { chip:"Neue Version · In 6 Sprachen", h1:"Dein Camino,<em>auch ohne Netz.</em>", sub:"Wie viele Kilometer noch, was jedes Dorf bietet und wo du heute schläfst. 15 Wege nach Santiago auf deinem iPhone.", storeSmall:"Laden im", ctaCorto:"Laden", verMas:"So funktioniert's", android:"Android? Bald bei Google Play.", androidNow:"Du nutzt Android: CaminoMate kommt bald zu Google Play. Bis dahin kannst du sie Freunden mit iPhone zeigen.",
+  de: { guias:"Wegführer (Spanisch/Englisch)", guiasCta:"Alle Etappen im Wegführer ansehen →", chip:"Neue Version · In 6 Sprachen", h1:"Dein Camino,<em>auch ohne Netz.</em>", sub:"Wie viele Kilometer noch, was jedes Dorf bietet und wo du heute schläfst. 15 Wege nach Santiago auf deinem iPhone.", storeSmall:"Laden im", ctaCorto:"Laden", verMas:"So funktioniert's", android:"Android? Bald bei Google Play.", androidNow:"Du nutzt Android: CaminoMate kommt bald zu Google Play. Bis dahin kannst du sie Freunden mit iPhone zeigen.",
     p1:"Offline", p2:"Ohne Werbung", p3:"Ohne Anmeldung", c1:"Wege nach Santiago", c2:"Herbergen mit Preisen", c3:"Sprachen", c4:"Werbung",
     queT:"Gemacht für <span class='acc'>unterwegs</span>", que:"Groß, klar und unabhängig vom Netz. Das hast du in der Tasche.", desliza:"Wischen für mehr →",
     f0t:"Die Kilometer bis Santiago, <em>live</em>", f0:"Deine Position auf dem echten Weg, die Kilometer bis Santiago und deine Ankunftszeit in deinem Tempo. Und eine Warnung, wenn du vom Weg abkommst.",
@@ -452,7 +453,7 @@ const T = {
     asocT:"Sind Sie ein Jakobusverein?", asoc:"Veröffentlichen Sie Ihren Weg unter Ihrem Namen in CaminoMate: Route, Etappen und Unterkünfte, die Ihre Ehrenamtlichen über ein Web-Panel pflegen, ein Code in Ihrem gedruckten Führer, und Meldungen zur Markierung direkt an Sie. So arbeiten wir bereits mit einem französischen Verein.", asocCta:"Schreiben Sie uns →",
     finalT:"Santiago wartet.<em>Komm mit CaminoMate an.</em>", final:"Lade sie vor dem Start herunter: deine Etappen und Herbergen bleiben dabei, auch wenn das Netz weg ist.", qrT:"Am Computer?", qr:"Mit der iPhone-Kamera scannen und herunterladen.",
     barra:"Der Jakobsweg, offline", contacto:"Kontakt:", soporte:"Hilfe und Fragen", privacidad:"Datenschutz", fotos:"Fotos:" },
-  it: { chip:"Nuova versione · In 6 lingue", h1:"Il tuo Cammino,<em>anche senza campo.</em>", sub:"Quanti km mancano, cosa c'è in ogni paese e dove dormire stanotte. 15 cammini verso Santiago sul tuo iPhone.", storeSmall:"Scarica su", ctaCorto:"Scarica", verMas:"Come funziona", android:"Android? Presto su Google Play.", androidNow:"Sei su Android: CaminoMate arriva presto su Google Play. Nel frattempo, condividila con chi ha un iPhone.",
+  it: { guias:"Guide dei cammini (spagnolo/inglese)", guiasCta:"Vedi la guida di tutte le tappe →", chip:"Nuova versione · In 6 lingue", h1:"Il tuo Cammino,<em>anche senza campo.</em>", sub:"Quanti km mancano, cosa c'è in ogni paese e dove dormire stanotte. 15 cammini verso Santiago sul tuo iPhone.", storeSmall:"Scarica su", ctaCorto:"Scarica", verMas:"Come funziona", android:"Android? Presto su Google Play.", androidNow:"Sei su Android: CaminoMate arriva presto su Google Play. Nel frattempo, condividila con chi ha un iPhone.",
     p1:"Offline", p2:"Senza pubblicità", p3:"Senza registrazione", c1:"cammini verso Santiago", c2:"albergue con prezzi", c3:"lingue", c4:"pubblicità",
     queT:"Fatta per usarla <span class='acc'>camminando</span>", que:"Grande, chiara e indipendente dal campo. Ecco cosa porti in tasca.", desliza:"Scorri per vedere di più →",
     f0t:"I km che mancano, <em>dal vivo</em>", f0:"La tua posizione sul tracciato reale, i km a Santiago e l'ora di arrivo al tuo ritmo. E un avviso se esci dal Cammino.",
@@ -468,7 +469,7 @@ const T = {
     asocT:"Siete un'associazione jacopea?", asoc:"Pubblicate il vostro cammino in CaminoMate con il vostro nome: tracciato, tappe e alloggi che i vostri volontari aggiornano da un pannello web, un codice nella guida cartacea e le segnalazioni sulla segnaletica direttamente a voi. Lavoriamo già così con un'associazione francese.", asocCta:"Scriveteci →",
     finalT:"Santiago ti aspetta.<em>Arrivaci con CaminoMate.</em>", final:"Scaricala prima di partire: tappe e albergue restano con te anche senza campo.", qrT:"Sei al computer?", qr:"Scansiona con la fotocamera dell'iPhone per scaricarla.",
     barra:"Il Cammino di Santiago, offline", contacto:"Contatto:", soporte:"Assistenza e domande", privacidad:"Privacy", fotos:"Foto:" },
-  pt: { chip:"Nova versão · Em 6 idiomas", h1:"O teu Caminho,<em>mesmo sem rede.</em>", sub:"Quantos km faltam, o que há em cada aldeia e onde dormir esta noite. 15 caminhos até Santiago no teu iPhone.", storeSmall:"Descarregar na", ctaCorto:"Descarregar", verMas:"Ver como funciona", android:"Android? Em breve no Google Play.", androidNow:"Estás em Android: o CaminoMate chega em breve ao Google Play. Entretanto, partilha-a com quem tem iPhone.",
+  pt: { guias:"Guias dos caminhos (espanhol/inglês)", guiasCta:"Ver o guia de todas as etapas →", chip:"Nova versão · Em 6 idiomas", h1:"O teu Caminho,<em>mesmo sem rede.</em>", sub:"Quantos km faltam, o que há em cada aldeia e onde dormir esta noite. 15 caminhos até Santiago no teu iPhone.", storeSmall:"Descarregar na", ctaCorto:"Descarregar", verMas:"Ver como funciona", android:"Android? Em breve no Google Play.", androidNow:"Estás em Android: o CaminoMate chega em breve ao Google Play. Entretanto, partilha-a com quem tem iPhone.",
     p1:"Sem rede", p2:"Sem anúncios", p3:"Sem registo", c1:"caminhos até Santiago", c2:"albergues com preço", c3:"idiomas", c4:"anúncios",
     queT:"Feita para usar <span class='acc'>a caminhar</span>", que:"Grande, clara e sem depender da rede. É isto que levas no bolso.", desliza:"Desliza para ver mais →",
     f0t:"Os km que faltam, <em>ao vivo</em>", f0:"A tua posição sobre o traçado real, os km até Santiago e a hora de chegada ao teu ritmo. E um aviso se saíres do Caminho.",
@@ -496,6 +497,8 @@ function aplicar(l) {
   document.querySelectorAll("[data-img]").forEach((e) => { e.src = `img/${l}-${e.dataset.img}.jpg`; e.alt = "CaminoMate"; });
   document.querySelectorAll("[data-list]").forEach((e) => { e.innerHTML = t[e.dataset.list].map((x) => `<li>${x}</li>`).join(""); });
 }
+function enlacesGuias(l){ const p = l === "en" ? "en/caminos/" : l === "fr" ? "fr/caminos/" : (l === "de" || l === "it" || l === "pt") ? "en/caminos/" : "caminos/"; document.querySelectorAll(".guias-link").forEach((a) => { a.href = p; }); }
+const _aplicar = aplicar; aplicar = (l) => { _aplicar(l); enlacesGuias(l); };
 document.getElementById("lang").addEventListener("change", (e) => { try { localStorage.setItem("cm_lang", e.target.value); } catch (er) {} aplicar(e.target.value); });
 aplicar(pick());
 

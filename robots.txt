@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fastsetupalex-cell.github.io/caminomate-web/sitemap.xml
