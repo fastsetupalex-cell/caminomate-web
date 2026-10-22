@@ -479,7 +479,13 @@ function contar(){document.querySelectorAll("[data-n]").forEach(b=>{const fin=+b
 const QUIETO=matchMedia("(prefers-reduced-motion: reduce)").matches&&new URLSearchParams(location.search).get("anim")!=="1";
 let ctx=null;
 function montarAnims(rehacer){
-  if(!window.gsap||QUIETO){document.getElementById("intro").style.height="100svh";document.querySelectorAll("#intro .velo").forEach(e=>e.style.opacity=1);document.querySelectorAll("#intro .mascara").forEach(e=>e.style.display="none");document.querySelectorAll("#intro .hero").forEach(e=>{e.style.opacity=1;e.style.transform="none"});document.querySelectorAll("#oia .w").forEach(w=>w.style.opacity=1);contar();return}
+  if(!window.gsap||QUIETO){document.getElementById("intro").style.height="100svh";document.querySelectorAll("#intro .velo").forEach(e=>e.style.opacity=1);document.querySelectorAll("#intro .mascara").forEach(e=>e.style.display="none");document.querySelectorAll("#intro .hero").forEach(e=>{e.style.opacity=1;e.style.transform="none"});document.querySelectorAll("#oia .w").forEach(w=>w.style.opacity=1);document.querySelectorAll(".cap .fondo").forEach(f=>f.style.backgroundImage="url(img/"+f.parentNode.dataset.foto+".jpg)");
+    if(window.gsap){/* version suave: solo fundidos, sin zoom ni desplazamientos */
+      gsap.registerPlugin(ScrollTrigger);if(ctx)ctx.revert();
+      ctx=gsap.context(()=>{gsap.utils.toArray("#que h2,.cap .txt,.cap .tel,#offline h2,.tres div,#rutas h2,.card,#oia .big,#final h2,#final p").forEach(e=>gsap.from(e,{opacity:0,duration:1.2,ease:"power1.out",scrollTrigger:{trigger:e,start:"top 88%"}}))});
+      ScrollTrigger.refresh();
+    }
+    contar();return}
   if(ctx)ctx.revert();
   gsap.registerPlugin(ScrollTrigger);
   ctx=gsap.context(()=>{
